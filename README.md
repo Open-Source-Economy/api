@@ -116,6 +116,6 @@ npm run build
 npm run fmt
 git wipp
 npm version prerelease
-npm publish
+npm publish --tag beta
 ```
 
