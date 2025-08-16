@@ -1,14 +1,14 @@
 {
-  "name": "api",
+  "name": "@open-source-economy/api-types",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Shared TypeScript types for Open Source Economy website API.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "fmt": "prettier */*.js \"*/**/*{.js,.ts,.tsx}\" -w ; tsc --project tsconfig.json && tsc --project tsconfig.test.json ; rm -f -r dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
@@ -20,5 +20,11 @@
     "decimal.js": "^10.6.0",
     "http-status-codes": "^2.3.0",
     "stripe": "^18.4.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }
