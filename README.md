@@ -52,8 +52,10 @@ To propose a change, submit a Pull Request to the `main` branch. Once your chang
 
 **1. Make sure your changes are tested and documented.**
 Ensure that any changes to types are reflected in the documentation and that you have added or updated tests as necessary.
+
 ```shell
 npm run build 
+npm run fmt
 ```
 
 **1. Update the Version**
@@ -107,3 +109,13 @@ To build the package locally:
 ```bash
 npm run build
 ```
+
+TEMP Lauriane.
+```shell
+npm run build 
+npm run fmt
+git wipp
+npm version prerelease
+npm publish
+```
+
