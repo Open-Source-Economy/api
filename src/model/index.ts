@@ -14,3 +14,4 @@ export * from "./ManualInvoice";
 export * from "./CompanyUserPermissionToken";
 export * from "./RepositoryUserPermissionToken";
 export * from "./UserRepository";
+export * from "./NewsletterSubscription";
