@@ -1,7 +1,6 @@
 // src/api/dto/onboarding.ts
 
 import { CurrencyType, DeveloperRights, DeveloperService, DeveloperSettings, IncomeStreamType, OpenToOtherOpportunityType } from "../../model";
-import { GitHubRepository } from "../../../services";
 
 // export interface ResponseBody<T> {
 //     success?: T;
@@ -117,6 +116,8 @@ class GitHubOrganization {}
 export interface GetGithubOrganizationsResponse {
   data: GitHubOrganization[];
 }
+
+class GitHubRepository {}
 
 export interface GetGithubRepositoriesResponse {
   data: GitHubRepository[];
