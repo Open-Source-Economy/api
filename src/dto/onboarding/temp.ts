@@ -1,6 +1,4 @@
-// src/api/dto/onboarding.ts
-
-import { CurrencyType, DeveloperRights, DeveloperService, DeveloperSettings, IncomeStreamType, OpenToOtherOpportunityType } from "../../model";
+import { CurrencyType, DeveloperRights, DeveloperService, DeveloperSettings, IncomeStreamType } from "../../model";
 
 // export interface ResponseBody<T> {
 //     success?: T;
@@ -55,6 +53,7 @@ export interface CreateCustomServiceDto {
   name: string;
   hasResponseTime?: boolean;
 }
+
 //
 export interface AddDeveloperServiceDto {
   projectItemId: string;
@@ -111,7 +110,6 @@ export interface GetRepositoriesResponse {
   services: DeveloperService[];
 }
 
-// TODO: lolo
 class GitHubOrganization {}
 
 export interface GetGithubOrganizationsResponse {
@@ -119,7 +117,7 @@ export interface GetGithubOrganizationsResponse {
 }
 
 export interface GetGithubRepositoriesResponse {
-  data: GitHubOrganization[];
+  data: GitHubOrganization[]; // TODO: temp
 }
 
 export interface UpdateDeveloperRightsResponse extends DeveloperRights {}
@@ -135,6 +133,8 @@ export interface AddDeveloperServiceResponse extends DeveloperService {}
 export interface UpdateDeveloperServiceResponse extends DeveloperService {}
 
 export interface DeleteDeveloperServiceResponse {}
+
+export interface CompleteOnboardingResponse {}
 
 export interface SetIncomeStreamsResponse {
   incomeStreams: IncomeStreamType[];

@@ -60,6 +60,9 @@ npm run build
 Before publishing, you must increment the version number in the `package.json` file. Use the `npm version` command for this.
 
 ```bash
+
+npm version patch
+
 # For a minor, backwards-compatible change
 npm version minor
 
