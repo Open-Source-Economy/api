@@ -50,6 +50,12 @@ This project follows [Semantic Versioning (SemVer)](https://semver.org/).
 
 To propose a change, submit a Pull Request to the `main` branch. Once your changes are merged, a new version can be published.
 
+**1. Make sure your changes are tested and documented.**
+Ensure that any changes to types are reflected in the documentation and that you have added or updated tests as necessary.
+```shell
+npm run build 
+```
+
 **1. Update the Version**
 Before publishing, you must increment the version number in the `package.json` file. Use the `npm version` command for this.
 
