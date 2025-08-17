@@ -3,7 +3,7 @@ import { UUID } from "../UUID";
 
 export class ServiceId extends UUID {}
 
-export interface Services {
+export interface Service {
   id: ServiceId;
   name: string;
   parentId?: ServiceId;
@@ -13,8 +13,8 @@ export interface Services {
   updatedAt: Date;
 }
 
-export namespace ServicesCompanion {
-  export function fromBackend(row: any): Services | ValidationError {
+export namespace ServiceCompanion {
+  export function fromBackend(row: any): Service | ValidationError {
     const validator = new Validator(row);
     const id = validator.requiredString("id");
     const name = validator.requiredString("name");

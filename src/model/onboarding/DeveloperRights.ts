@@ -1,6 +1,6 @@
 import { ValidationError, Validator } from "../error";
 import { UUID } from "../UUID";
-import { MergeRights } from "./old/DeveloperProject";
+import { MergeRights } from "./DeveloperProjectItem";
 import { DeveloperProfileId } from "./DeveloperProfile";
 import { ProjectItemId } from "../project";
 

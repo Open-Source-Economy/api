@@ -1,5 +1,5 @@
-import { DeveloperProfile, DeveloperService } from "../../../model";
-import { DeveloperProject } from "../../../model/onboarding/old/DeveloperProject";
+import { DeveloperProfile, DeveloperService, Project, ProjectItem, ProjectItemId, Service } from "../../../model";
+import { DeveloperProjectItem } from "../../../model/onboarding/DeveloperProjectItem";
 import { DeveloperIncomePreference } from "../../../model/onboarding/old/DeveloperIncomePreference";
 import { DeveloperAvailability } from "../../../model/onboarding/old/DeveloperAvailability";
 import { ServiceCategory } from "../../../model/onboarding/old/ServiceCategory";
@@ -8,26 +8,20 @@ export interface GetDeveloperProfileParams {}
 export interface GetDeveloperProfileBody {}
 export interface GetDeveloperProfileQuery {}
 export interface GetDeveloperProfileResponse {
-  profile: DeveloperProfile;
-  projects: DeveloperProject[];
-  incomePreference: DeveloperIncomePreference | null;
-  availability: DeveloperAvailability | null;
-  services: DeveloperServiceWithCategory[];
+  profile: DeveloperProfileTODO | null;
 }
 
-// TODO: lolo delet
-
-export interface GetDeveloperProfileDto {
+export interface DeveloperProfileTODO {
   profile: DeveloperProfile;
-  projects: DeveloperProject[];
+  projects: [ProjectItem, DeveloperProjectItem][];
   incomePreference: DeveloperIncomePreference | null;
   availability: DeveloperAvailability | null;
   services: DeveloperServiceWithCategory[];
 }
 
 export interface DeveloperServiceWithCategory extends DeveloperService {
-  serviceCategory: ServiceCategory;
-  projects: DeveloperProject[];
+  service: Service;
+  projectItems: ProjectItem[];
 }
 
 export interface ServiceCategoryDto {

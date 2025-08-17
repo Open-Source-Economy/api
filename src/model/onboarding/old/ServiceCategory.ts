@@ -8,6 +8,7 @@ export interface ServiceCategory {
   name: string;
   parentCategory: string | null;
   hasResponseTime: boolean;
+  // TODO: infos are missing
   createdAt: Date;
   updatedAt: Date;
 }

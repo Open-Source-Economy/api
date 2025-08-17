@@ -1,6 +1,7 @@
-import { ValidationError, Validator } from "../../error";
-import { DeveloperProfileId } from "../DeveloperProfile";
-import { UUID } from "../../UUID";
+import { ValidationError, Validator } from "../error";
+import { DeveloperProfileId } from "./DeveloperProfile";
+import { UUID } from "../UUID";
+import { ProjectItemId } from "../project";
 
 export class DeveloperProjectId extends UUID {}
 
@@ -23,14 +24,10 @@ export enum MergeRights {
   FORMAL_PROCESS = "formal_process",
 }
 
-export interface DeveloperProject {
+export interface DeveloperProjectItem {
   id: DeveloperProjectId;
   developerProfileId: DeveloperProfileId;
-  projectType: ProjectType;
-  githubOrg: string | null; // TODO: lolo use the Id type
-  githubRepo: string | null;
-  projectName: string | null;
-  projectUrl: string | null;
+  projectItemId: ProjectItemId;
   role: ProjectRole;
   mergeRights: MergeRights;
   createdAt: Date;
@@ -38,15 +35,11 @@ export interface DeveloperProject {
 }
 
 export namespace DeveloperProjectCompanion {
-  export function fromBackend(row: any): DeveloperProject | ValidationError {
+  export function fromBackend(row: any): DeveloperProjectItem | ValidationError {
     const validator = new Validator(row);
     const id = validator.requiredString("id");
     const developerProfileId = validator.requiredString("developer_profile_id");
-    const projectType = validator.requiredEnum("project_type", Object.values(ProjectType) as ProjectType[]);
-    const githubOrg = validator.optionalString("github_org");
-    const githubRepo = validator.optionalString("github_repo");
-    const projectName = validator.optionalString("project_name");
-    const projectUrl = validator.optionalString("project_url");
+    const projectItemId = validator.requiredString("TODO");
     const role = validator.requiredEnum("role", Object.values(ProjectRole) as ProjectRole[]);
     const mergeRights = validator.requiredEnum("merge_rights", Object.values(MergeRights) as MergeRights[]);
     const createdAt = validator.requiredDate("created_at");
@@ -60,11 +53,7 @@ export namespace DeveloperProjectCompanion {
     return {
       id: new DeveloperProjectId(id),
       developerProfileId: new DeveloperProfileId(developerProfileId),
-      projectType,
-      githubOrg: githubOrg ?? null,
-      githubRepo: githubRepo ?? null,
-      projectName: projectName ?? null,
-      projectUrl: projectUrl ?? null,
+      projectItemId: new ProjectItemId(projectItemId),
       role,
       mergeRights,
       createdAt,

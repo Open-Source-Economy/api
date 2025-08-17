@@ -82,8 +82,6 @@ export interface UpdateDeveloperProfileResponse {
   onboardingCompleted: boolean;
 }
 
-export interface GetDeveloperProfileResponse {}
-
 export interface AddRepositoryResponse {
   projectItemId: string;
   repository: string;
