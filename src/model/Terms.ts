@@ -1,3 +1,3 @@
-interface Terms {
+export interface Terms {
   version: string;
 }
