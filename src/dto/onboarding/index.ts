@@ -12,4 +12,3 @@ export * from "./SetIncomePreference.dto";
 export * from "./SetAvailability.dto";
 export * from "./AddService.dto";
 export * from "./UpdateService.dto";
-export * from "./temp";
