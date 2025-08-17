@@ -1,0 +1,3 @@
+interface Terms {
+  version: string;
+}

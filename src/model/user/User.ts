@@ -41,13 +41,22 @@ export class User implements Express.User {
   data: LocalUser | ThirdPartyUser;
   role: UserRole;
   preferredCurrency?: Currency;
+  termsAcceptedVersion?: string;
 
-  constructor(id: UserId, name: string | null, data: LocalUser | ThirdPartyUser, role: UserRole, preferredCurrency?: Currency) {
+  constructor(
+    id: UserId,
+    name: string | null,
+    data: LocalUser | ThirdPartyUser,
+    role: UserRole,
+    preferredCurrency: Currency | undefined,
+    termsAcceptedVersion: string | undefined,
+  ) {
     this.id = id;
     this.name = name;
     this.data = data;
     this.role = role;
     this.preferredCurrency = preferredCurrency;
+    this.termsAcceptedVersion = termsAcceptedVersion;
   }
 
   static fromRaw(row: any, owner: Owner | null = null): User | ValidationError {
@@ -56,6 +65,7 @@ export class User implements Express.User {
     const name = validator.optionalString("name");
     const role = validator.requiredEnum("role", Object.values(UserRole) as UserRole[]);
     const preferredCurrency = validator.optionalEnum("preferred_currency", Object.values(Currency) as Currency[]);
+    const termsAcceptedVersion = validator.optionalString("terms_accepted_version");
 
     const error = validator.getFirstError();
     if (error) {
@@ -81,6 +91,6 @@ export class User implements Express.User {
       return enumError;
     }
 
-    return new User(new UserId(id), name ?? null, user, role, preferredCurrency);
+    return new User(new UserId(id), name ?? null, user, role, preferredCurrency, termsAcceptedVersion);
   }
 }
