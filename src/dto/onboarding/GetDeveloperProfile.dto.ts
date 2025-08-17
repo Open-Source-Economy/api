@@ -1,4 +1,10 @@
-import { DeveloperProfile, DeveloperProject, DeveloperIncomePreference, DeveloperAvailability, DeveloperService, ServiceCategory } from "../../model";
+import { DeveloperProfile, DeveloperService } from "../../model";
+import { DeveloperProject } from "../../model/onboarding/old/DeveloperProject";
+import { DeveloperIncomePreference } from "../../model/onboarding/old/DeveloperIncomePreference";
+import { DeveloperAvailability } from "../../model/onboarding/old/DeveloperAvailability";
+import { ServiceCategory } from "../../model/onboarding/old/ServiceCategory";
+
+// TODO: lolo
 
 export interface GetDeveloperProfileDto {
   profile: DeveloperProfile;

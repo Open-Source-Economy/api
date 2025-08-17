@@ -1,11 +1,11 @@
 export * from "./DeveloperProfile";
 export * from "./DeveloperSettings";
 export * from "./DeveloperRights";
-export * from "./Services";
 export * from "./DeveloperService";
 
-// Legacy exports - to be removed after migration
-export * from "./DeveloperProject";
-export * from "./DeveloperIncomePreference";
-export * from "./DeveloperAvailability";
-export * from "./ServiceCategory";
+// TODO: lolo
+// // Legacy exports - to be removed after migration
+// export * from "./old/DeveloperProject";
+// export * from "./old/DeveloperIncomePreference";
+// export * from "./old/DeveloperAvailability";
+// export * from "./old/ServiceCategory";

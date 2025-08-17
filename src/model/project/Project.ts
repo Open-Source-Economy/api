@@ -1,6 +1,10 @@
 import { Owner, OwnerId, Repository, RepositoryId } from "../github";
 import { ValidationError, Validator } from "../error";
 import { ProjectEcosystem } from "./ProjectEcosystem";
+import { UUID } from "../UUID";
+
+// TODO: deal this this later:
+export class ProjectItemId extends UUID {}
 
 // ProjectId is a type union rather than a class
 export type ProjectId = RepositoryId | OwnerId;

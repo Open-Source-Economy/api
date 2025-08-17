@@ -5,6 +5,7 @@ export * from "./stripe";
 export * from "./onboarding";
 export * from "./error";
 
+export * from "./UUID";
 export * from "./Address";
 export * from "./FinancialIssue";
 export * from "./Company";

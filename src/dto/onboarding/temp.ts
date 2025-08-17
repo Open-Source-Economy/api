@@ -1,6 +1,6 @@
 // src/api/dto/onboarding.ts
 
-import { CurrencyType, DeveloperRights, DeveloperService, DeveloperSettings, IncomeStreamType, OpenToOtherOpportunityType } from "../../model";
+import { Currency, DeveloperRights, DeveloperService, DeveloperSettings, IncomeStreamType, OpenToOtherOpportunityType } from "../../model";
 
 // export interface ResponseBody<T> {
 //     success?: T;
@@ -24,7 +24,7 @@ import { CurrencyType, DeveloperRights, DeveloperService, DeveloperSettings, Inc
 //     hourlyWeeklyCommitment: number;
 //     openToOtherOpportunity: OpenToOtherOpportunityType;
 //     hourlyRate: number;
-//     currency: CurrencyType;
+//     currency: Currency;
 // }
 //
 // export interface SetIncomeStreamsDto {
@@ -60,13 +60,13 @@ export interface AddDeveloperServiceDto {
   projectItemId: string;
   serviceId: string;
   hourlyRate: number;
-  currency: CurrencyType;
+  currency: Currency;
   responseTimeHours: number;
 }
 
 export interface UpdateDeveloperServiceDto {
   hourlyRate: number;
-  currency: CurrencyType;
+  currency: Currency;
   responseTimeHours?: number;
 }
 
@@ -82,19 +82,7 @@ export interface UpdateDeveloperProfileResponse {
   onboardingCompleted: boolean;
 }
 
-export interface GetDeveloperProfileResponse {
-  user: {
-    name: string | null;
-    email: string | null;
-  };
-  profile: {
-    id: string;
-    onboardingCompleted: boolean;
-  } | null;
-  settings: DeveloperSettings | null;
-  rights: DeveloperRights[] | null;
-  services: DeveloperService[] | null;
-}
+export interface GetDeveloperProfileResponse {}
 
 export interface AddRepositoryResponse {
   projectItemId: string;

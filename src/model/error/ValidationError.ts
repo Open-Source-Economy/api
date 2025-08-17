@@ -44,9 +44,9 @@ class ObjectValidationError extends FieldValidationError {
 }
 
 class EnumValidationError extends ValidationError {
-  constructor(path: string | string[], data: any, enumType: string[]) {
+  constructor(path: string | string[], value: any, data: any, enumType: string[]) {
     const p = typeof path === "string" ? path : path.join(".");
-    super(`${p}" is not contained in enum type ${enumType}`, data);
+    super(`Invalid enum value: field "${p}" with value "${value}" is not contained in enum type [${enumType.join(", ")}]`, data);
   }
 }
 
@@ -261,33 +261,54 @@ export class Validator {
   }
 
   optionalEnum<EnumType extends string>(path: string | string[], enumType: EnumType[]): EnumType | undefined {
-    const value = this.getValue(path) as EnumType | undefined;
+    const value = this.getValue(path);
 
     if (value === undefined || value === null) {
-      return undefined; // Return undefined for optional values
-    }
-
-    const enumValues = Object.values(enumType) as EnumType[];
-    if (!enumValues.includes(value)) {
-      this.errors.push(new EnumValidationError(path, value, enumType));
       return undefined;
     }
 
-    return value;
+    if (typeof value !== "string" || !enumType.includes(value as EnumType)) {
+      this.errors.push(new EnumValidationError(path, value, this.data, enumType as string[]));
+      return undefined;
+    }
+
+    return value as EnumType;
   }
 
-  requiredEnum<EnumType extends string>(
-    path: string | string[],
-    enumType: EnumType[],
-    // @ts-ignore
-  ): EnumType {
-    const value = this.getValue(path) as EnumType;
-    const enumValues = Object.values(enumType) as EnumType[];
-    if (!enumValues.includes(value)) {
-      this.errors.push(new EnumValidationError(path, value, enumType));
-    } else {
-      return value;
+  requiredEnum<EnumType extends string>(path: string | string[], enumType: EnumType[]): EnumType {
+    const value = this.getValue(path);
+
+    if (typeof value !== "string" || !enumType.includes(value as EnumType)) {
+      this.errors.push(new EnumValidationError(path, value, this.data, enumType as string[]));
+      return enumType[0]; // Return the first enum value as a fallback
     }
+
+    return value as EnumType;
+  }
+
+  requiredArrayOfEnums<EnumType extends string>(path: string | string[], enumType: EnumType[]): EnumType[] {
+    const value = this.getValue(path);
+
+    if (!Array.isArray(value)) {
+      this.errors.push(new ArrayValidationError(path, value, this.data));
+      return [];
+    }
+
+    const result: EnumType[] = [];
+    let hasError = false;
+
+    for (const element of value) {
+      if (typeof element !== "string" || !enumType.includes(element as EnumType)) {
+        this.errors.push(new EnumValidationError(path, element, this.data, enumType as string[]));
+        hasError = true;
+      } else {
+        result.push(element as EnumType);
+      }
+    }
+
+    // If there was any error, return an empty array or the partial array depending on your desired behavior.
+    // Here we'll return the partially validated array and let the caller handle the error via getFirstError().
+    return result;
   }
 
   optionalDate(path: string | string[]): Date | undefined {
