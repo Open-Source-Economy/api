@@ -1,6 +1,5 @@
-export * from "./CreateDeveloperProfile.dto";
-export * from "./UpdateDeveloperProfile.dto";
-export * from "./GetDeveloperProfile.dto";
+export * from "./profile";
+
 export * from "./SetDeveloperSettings.dto";
 export * from "./SetIncomeStreams.dto";
 export * from "./AddDeveloperRights.dto";
