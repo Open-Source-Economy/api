@@ -1,11 +1,11 @@
 import { DeveloperServiceId, ProjectItemId, ServiceId } from "../../../../model";
 
-export interface ModifyDeveloperServiceParams {}
-export interface ModifyDeveloperServiceBody {
+export interface UpdateDeveloperServiceParams {}
+export interface UpdateDeveloperServiceBody {
   id: DeveloperServiceId;
   projectItemIds: ProjectItemId[];
   hourlyRate?: number;
   responseTimeHours?: number;
 }
-export interface ModifyDeveloperServiceQuery {}
-export interface ModifyDeveloperServiceResponse {}
+export interface UpdateDeveloperServiceQuery {}
+export interface UpdateDeveloperServiceResponse {}
