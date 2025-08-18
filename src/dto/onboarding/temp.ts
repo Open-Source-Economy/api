@@ -1,6 +1,16 @@
 // src/api/dto/onboarding.ts
 
-import { Currency, DeveloperRights, DeveloperService, DeveloperSettings, IncomeStreamType, OpenToOtherOpportunityType } from "../../model";
+import {
+  Currency,
+  DeveloperRights,
+  DeveloperRoleType,
+  DeveloperService,
+  DeveloperSettings,
+  IncomeStreamType,
+  MergeRightsType,
+  OpenToOtherOpportunityType,
+} from "../../model";
+import { DeveloperProfileTODO } from "./profile";
 
 // export interface ResponseBody<T> {
 //     success?: T;
@@ -97,18 +107,6 @@ export interface GetRepositoriesResponse {
   services: DeveloperService[];
 }
 
-class GitHubOrganization {}
-
-export interface GetGithubOrganizationsResponse {
-  data: GitHubOrganization[];
-}
-
-class GitHubRepository {}
-
-export interface GetGithubRepositoriesResponse {
-  data: GitHubRepository[];
-}
-
 export interface UpdateDeveloperRightsResponse extends DeveloperRights {}
 
 export interface GetServicesResponse {
@@ -144,3 +142,124 @@ export interface DeveloperServiceIdParams {
 export interface GitHubOrgParams {
   org: string; // TODO: lauriane create a class for safety - I dont understand which id this is
 }
+
+// ---
+
+// DTOs for UpdateDeveloperContactInfos
+export interface UpdateDeveloperContactInfosParams {}
+export interface UpdateDeveloperContactInfosBody {
+  name: string;
+  email: string;
+}
+export interface UpdateDeveloperContactInfosQuery {}
+export interface UpdateDeveloperContactInfosResponse {}
+
+// DTOs for GetDeveloperProfile
+export interface GetDeveloperProfileParams {}
+export interface GetDeveloperProfileBody {}
+export interface GetDeveloperProfileQuery {}
+export interface GetDeveloperProfileResponse {
+  profile: DeveloperProfileTODO | null;
+}
+
+// DTOs for RemoveRepository
+export interface RemoveRepositoryParams {
+  projectItemId: string; // Used in req.params.projectItemId
+}
+export interface RemoveRepositoryBody {}
+export interface RemoveRepositoryQuery {}
+export interface RemoveRepositoryResponse {}
+
+// DTOs for GetRepositories
+export interface GetRepositoriesParams {}
+export interface GetRepositoriesBody {}
+export interface GetRepositoriesQuery {}
+export interface GetRepositoriesResponse {
+  data: Array<{
+    projectItemId: string;
+    repository: string | null;
+    roles: DeveloperRoleType[];
+    mergeRights: MergeRightsType[];
+    services: any[]; // Assuming services array structure from implementation
+  }>;
+}
+
+export interface GetGithubOrganizationsParams {}
+export interface GetGithubOrganizationsBody {}
+export interface GetGithubOrganizationsQuery {}
+export interface GetGithubOrganizationsResponse {
+  // data: Array<{ id: number; login: string; url: string; avatar_url: string }>; // Inferred common GitHub organization properties
+}
+
+// DTOs for GetGithubRepositories
+export interface GetGithubRepositoriesParams {
+  org: string; // Used in req.params.org
+}
+export interface GetGithubRepositoriesBody {}
+export interface GetGithubRepositoriesQuery {}
+export interface GetGithubRepositoriesResponse {
+  data: Array<{ id: number; name: string; full_name: string; html_url: string }>; // Inferred common GitHub repository properties
+}
+
+// DTOs for GetUserGithubRepositories
+export interface GetUserGithubRepositoriesParams {}
+export interface GetUserGithubRepositoriesBody {}
+export interface GetUserGithubRepositoriesQuery {}
+export interface GetUserGithubRepositoriesResponse {
+  data: Array<{ id: number; name: string; full_name: string; html_url: string }>; // Inferred common GitHub repository properties
+}
+
+// DTOs for GetServices
+export interface GetServicesParams {}
+export interface GetServicesBody {}
+export interface GetServicesQuery {}
+export interface GetServicesResponse {
+  data: any; // Assuming getHierarchy returns a generic data structure
+}
+
+// DTOs for CreateCustomService
+export interface CreateCustomServiceParams {}
+export interface CreateCustomServiceBody {
+  name: string;
+  hasResponseTime?: boolean;
+}
+export interface CreateCustomServiceQuery {}
+export interface CreateCustomServiceResponse {}
+
+// DTOs for AddDeveloperService
+export interface AddDeveloperServiceParams {}
+export interface AddDeveloperServiceBody {
+  projectItemId: string;
+  serviceId: string;
+  hourlyRate: number;
+  currency: string;
+  responseTimeHours?: number | null;
+}
+export interface AddDeveloperServiceQuery {}
+export interface AddDeveloperServiceResponse {} // Response type not explicitly defined in implementation, assuming empty
+
+// DTOs for UpdateDeveloperService
+export interface UpdateDeveloperServiceParams {
+  id: string; // Used in req.params.id
+}
+export interface UpdateDeveloperServiceBody {
+  hourlyRate?: number;
+  currency?: string;
+  responseTimeHours?: number | null;
+}
+export interface UpdateDeveloperServiceQuery {}
+export interface UpdateDeveloperServiceResponse {} // Response type not explicitly defined in implementation, assuming empty
+
+// DTOs for DeleteDeveloperService
+export interface DeleteDeveloperServiceParams {
+  id: string; // Used in req.params.id
+}
+export interface DeleteDeveloperServiceBody {}
+export interface DeleteDeveloperServiceQuery {}
+export interface DeleteDeveloperServiceResponse {}
+
+// DTOs for CompleteOnboarding
+export interface CompleteOnboardingParams {}
+export interface CompleteOnboardingBody {}
+export interface CompleteOnboardingQuery {}
+export interface CompleteOnboardingResponse {}
