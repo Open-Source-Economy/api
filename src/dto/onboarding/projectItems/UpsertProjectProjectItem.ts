@@ -13,6 +13,8 @@ export interface UpsertProjectProjectItemBody {
 
 export interface UpsertProjectProjectItemQuery {}
 
+export interface UpsertProjectProjectItemResponse {}
+
 /// --- TODO: lolo
 export interface UpsertProjectProjectItemServiceDto {
   serviceId: string;
