@@ -1,4 +1,4 @@
-import { DeveloperRoleType, MergeRightsType } from "../../model";
+import { DeveloperRoleType, MergeRightsType } from "../../../model";
 
 export interface AddRepositoryParams {}
 

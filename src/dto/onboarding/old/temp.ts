@@ -9,8 +9,8 @@ import {
   IncomeStreamType,
   MergeRightsType,
   OpenToOtherOpportunityType,
-} from "../../model";
-import { DeveloperProfileTODO } from "./profile";
+} from "../../../model";
+import { DeveloperProfileTODO } from "../profile";
 
 // export interface ResponseBody<T> {
 //     success?: T;
@@ -61,10 +61,10 @@ import { DeveloperProfileTODO } from "./profile";
 //     mergeRights?: string[];
 // }
 //
-export interface CreateCustomServiceDto {
-  name: string;
-  hasResponseTime?: boolean;
-}
+// export interface CreateCustomServiceDto {
+//   name: string;
+//   hasResponseTime?: boolean;
+// }
 //
 export interface AddDeveloperServiceDto {
   projectItemId: string;
@@ -218,25 +218,8 @@ export interface GetServicesResponse {
 }
 
 // DTOs for CreateCustomService
-export interface CreateCustomServiceParams {}
-export interface CreateCustomServiceBody {
-  name: string;
-  hasResponseTime?: boolean;
-}
-export interface CreateCustomServiceQuery {}
-export interface CreateCustomServiceResponse {}
 
 // DTOs for AddDeveloperService
-export interface AddDeveloperServiceParams {}
-export interface AddDeveloperServiceBody {
-  projectItemId: string;
-  serviceId: string;
-  hourlyRate: number;
-  currency: string;
-  responseTimeHours?: number | null;
-}
-export interface AddDeveloperServiceQuery {}
-export interface AddDeveloperServiceResponse {} // Response type not explicitly defined in implementation, assuming empty
 
 // DTOs for UpdateDeveloperService
 export interface UpdateDeveloperServiceParams {
@@ -251,15 +234,5 @@ export interface UpdateDeveloperServiceQuery {}
 export interface UpdateDeveloperServiceResponse {} // Response type not explicitly defined in implementation, assuming empty
 
 // DTOs for DeleteDeveloperService
-export interface DeleteDeveloperServiceParams {
-  id: string; // Used in req.params.id
-}
-export interface DeleteDeveloperServiceBody {}
-export interface DeleteDeveloperServiceQuery {}
-export interface DeleteDeveloperServiceResponse {}
 
 // DTOs for CompleteOnboarding
-export interface CompleteOnboardingParams {}
-export interface CompleteOnboardingBody {}
-export interface CompleteOnboardingQuery {}
-export interface CompleteOnboardingResponse {}

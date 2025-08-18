@@ -1,4 +1,4 @@
-import { IncomeStreamType } from "../../model";
+import { IncomeStreamType } from "../../../model";
 
 export interface SetIncomeStreamsParams {}
 

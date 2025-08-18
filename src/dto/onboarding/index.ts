@@ -1,15 +1,14 @@
 export * from "./profile";
 export * from "./projectItems";
 
-export * from "./SetDeveloperSettings.dto";
-export * from "./SetIncomeStreams.dto";
-export * from "./AddDeveloperRights.dto";
-export * from "./AddRepository.dto";
+export * from "./CompleteOnboarding.dto";
 
 // TODO: lolo Legacy exports - to be removed after migration
-export * from "./AddProject.dto";
-export * from "./UpdateProject.dto";
-export * from "./SetIncomePreference.dto";
-export * from "./SetAvailability.dto";
-export * from "./AddService.dto";
-export * from "./UpdateService.dto";
+export * from "./old/SetIncomeStreams.dto";
+export * from "./old/AddRepository.dto";
+export * from "./old/AddProject.dto";
+export * from "./old/UpdateProject.dto";
+export * from "./old/SetIncomePreference.dto";
+export * from "./old/SetAvailability.dto";
+export * from "./old/AddService.dto";
+export * from "./old/UpdateService.dto";
