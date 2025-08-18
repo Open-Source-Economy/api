@@ -1,5 +1,4 @@
-import { DeveloperProfile, DeveloperService, Project, ProjectItem, ProjectItemId, Service } from "../../../model";
-import { DeveloperProjectItem } from "../../../model";
+import { DeveloperProfile, DeveloperProjectItem, DeveloperService, DeveloperSettings, ProjectItem, Service } from "../../../model";
 
 export interface GetDeveloperProfileParams {}
 export interface GetDeveloperProfileBody {}
@@ -15,6 +14,17 @@ export interface FullDeveloperProfile {
   // availability: DeveloperAvailability | null;
   services: DeveloperServiceWithCategory[];
 }
+
+// export interface FullDeveloperProfile {
+//   // name: string | null; // TODOshould no be here
+//   // email: string | null;
+//   profile: DeveloperProfile;
+//   settings: DeveloperSettings
+//   projects: [ProjectItem, DeveloperProjectItem][];
+//   incomePreference: DeveloperIncomePreference | null;
+//   availability: DeveloperRights | null;
+//   services: DeveloperServiceWithCategory[];
+// }
 
 export interface DeveloperServiceWithCategory extends DeveloperService {
   service: Service;

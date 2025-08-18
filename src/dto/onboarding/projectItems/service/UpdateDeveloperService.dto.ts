@@ -1,4 +1,4 @@
-import { DeveloperServiceId, ProjectItemId, ServiceId } from "../../../../model";
+import { DeveloperServiceId } from "../../../../model";
 
 export interface UpdateDeveloperServiceParams {}
 export interface UpdateDeveloperServiceBody {

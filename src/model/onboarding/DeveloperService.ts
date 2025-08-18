@@ -2,8 +2,7 @@ import { ValidationError, Validator } from "../error";
 import { DeveloperProfileId } from "./DeveloperProfile";
 import { Currency } from "../stripe";
 import { UUID } from "../UUID";
-import { ServiceId } from "../project";
-import { ProjectItemId } from "../project";
+import { ProjectItemId, ServiceId } from "../project";
 
 export class DeveloperServiceId extends UUID {}
 

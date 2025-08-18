@@ -1,4 +1,3 @@
-import { ValidationError, Validator } from "../error";
 import { UUID } from "../UUID";
 
 export class ServiceId extends UUID {}

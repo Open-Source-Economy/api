@@ -1,4 +1,4 @@
-import { IncomeStreamType, OpenToOtherOpportunityType, Currency } from "../../../model";
+import { Currency, IncomeStreamType, OpenToOtherOpportunityType } from "../../../model";
 
 export interface SetDeveloperSettingsParams {}
 

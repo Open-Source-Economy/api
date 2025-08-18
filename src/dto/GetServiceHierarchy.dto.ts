@@ -1,4 +1,4 @@
-import { ServiceHierarchyItem, ServiceType } from "../model";
+import { ServiceHierarchyItem } from "../model";
 
 export interface GetServiceHierarchyParams {}
 

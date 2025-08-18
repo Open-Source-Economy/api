@@ -1,6 +1,4 @@
 import { UUID } from "../UUID";
-import { ValidationError, Validator } from "../error";
-import { DeveloperProfileId, DeveloperProjectId, DeveloperProjectItem, MergeRights, ProjectRole, ProjectType } from "../onboarding";
 import { OwnerId, RepositoryId } from "../github";
 
 export enum ProjectItemType {

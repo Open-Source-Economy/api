@@ -1,4 +1,4 @@
-import { ProjectItemId, ServiceId } from "../../../../model";
+import { ServiceId } from "../../../../model";
 
 export interface DeleteDeveloperServiceParams {}
 export interface DeleteDeveloperServiceBody {

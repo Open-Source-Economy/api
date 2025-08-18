@@ -3,21 +3,21 @@ import { DeveloperProfileId } from "./DeveloperProfile";
 import { UUID } from "../UUID";
 import { ProjectItemId } from "../project";
 
-export class DeveloperProjectId extends UUID {}
+export class DeveloperProjectItemId extends UUID {}
 
 export enum ProjectType {
   GITHUB = "github",
   MANUAL = "manual",
 }
 
-export enum ProjectRole {
+export enum DeveloperRoleType {
   CREATOR_FOUNDER = "creator_founder",
   PROJECT_LEAD = "project_lead",
   CORE_DEVELOPER = "core_developer",
   MAINTAINER = "maintainer",
 }
 
-export enum MergeRights {
+export enum MergeRightsType {
   FULL_RIGHTS = "full_rights",
   SPECIFIC_AREAS = "specific_areas",
   NO_RIGHTS = "no_rights",
@@ -25,11 +25,11 @@ export enum MergeRights {
 }
 
 export interface DeveloperProjectItem {
-  id: DeveloperProjectId;
+  id: DeveloperProjectItemId;
   developerProfileId: DeveloperProfileId;
   projectItemId: ProjectItemId;
-  role: ProjectRole;
-  mergeRights: MergeRights;
+  roles: DeveloperRoleType[];
+  mergeRights: MergeRightsType[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -39,9 +39,9 @@ export namespace DeveloperProjectCompanion {
     const validator = new Validator(row);
     const id = validator.requiredString("id");
     const developerProfileId = validator.requiredString("developer_profile_id");
-    const projectItemId = validator.requiredString("TODO");
-    const role = validator.requiredEnum("role", Object.values(ProjectRole) as ProjectRole[]);
-    const mergeRights = validator.requiredEnum("merge_rights", Object.values(MergeRights) as MergeRights[]);
+    const projectItemId = validator.requiredString("project_item_id");
+    const roles = validator.requiredArrayOfEnums("role", Object.values(DeveloperRoleType) as DeveloperRoleType[]);
+    const mergeRights = validator.requiredArrayOfEnums("merge_rights", Object.values(MergeRightsType) as MergeRightsType[]);
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
 
@@ -51,10 +51,10 @@ export namespace DeveloperProjectCompanion {
     }
 
     return {
-      id: new DeveloperProjectId(id),
+      id: new DeveloperProjectItemId(id),
       developerProfileId: new DeveloperProfileId(developerProfileId),
       projectItemId: new ProjectItemId(projectItemId),
-      role,
+      roles,
       mergeRights,
       createdAt,
       updatedAt,

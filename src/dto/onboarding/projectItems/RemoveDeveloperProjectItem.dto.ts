@@ -1,4 +1,4 @@
-import { DeveloperRoleType, MergeRightsType, Owner, OwnerId, ProjectItemId, ProjectItemType, Repository, RepositoryId } from "../../../model";
+import { ProjectItemId } from "../../../model";
 
 export interface RemoveDeveloperProjectProjectItemParams {}
 

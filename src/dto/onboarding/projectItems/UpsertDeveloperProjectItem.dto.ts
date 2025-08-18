@@ -1,4 +1,4 @@
-import { DeveloperRoleType, MergeRightsType, Owner, OwnerId, ProjectItemType, Repository, RepositoryId } from "../../../model";
+import { DeveloperRoleType, MergeRightsType, OwnerId, ProjectItemType, RepositoryId } from "../../../model";
 
 export interface UpsertDeveloperProjectItemParams {}
 
