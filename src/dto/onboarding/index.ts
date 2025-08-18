@@ -1,4 +1,5 @@
 export * from "./profile";
+export * from "./projectItems";
 
 export * from "./SetDeveloperSettings.dto";
 export * from "./SetIncomeStreams.dto";
