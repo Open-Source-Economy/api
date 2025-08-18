@@ -1,4 +1,6 @@
-export interface AddServiceDto {
+export interface AddServiceParams {}
+
+export interface AddServiceBody {
   serviceCategoryId: string;
   serviceName?: string;
   hourlyRate: number;
@@ -6,3 +8,7 @@ export interface AddServiceDto {
   responseTimeHours?: number;
   projectIds: string[];
 }
+
+export interface AddServiceQuery {}
+
+export interface AddServiceResponse {}

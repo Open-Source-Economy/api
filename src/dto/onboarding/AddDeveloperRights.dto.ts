@@ -1,6 +1,12 @@
 import { DeveloperRoleType, MergeRightsType } from "../../model";
 
-export interface UpdateDeveloperRightsDto {
+export interface UpdateDeveloperRightsParams {}
+
+export interface UpdateDeveloperRightsBody {
   mergeRights?: MergeRightsType[];
   roles?: DeveloperRoleType[];
 }
+
+export interface UpdateDeveloperRightsQuery {}
+
+export interface UpdateDeveloperRightsResponse {}

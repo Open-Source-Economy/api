@@ -1,5 +1,11 @@
-import { IncomeStreamType } from "../../model/onboarding/DeveloperSettings";
+import { IncomeStreamType } from "../../model";
 
-export interface SetIncomeStreamsDto {
+export interface SetIncomeStreamsParams {}
+
+export interface SetIncomeStreamsBody {
   incomeStreams: IncomeStreamType[];
 }
+
+export interface SetIncomeStreamsQuery {}
+
+export interface SetIncomeStreamsResponse {}
