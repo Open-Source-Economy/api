@@ -1,1 +1,1 @@
-export * from "./UpsertProjectProjectItem";
+export * from "./UpsertDeveloperProjectItem.dto";
