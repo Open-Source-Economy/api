@@ -8,25 +8,11 @@ export interface GetDeveloperProfileResponse {
 }
 
 export interface FullDeveloperProfile {
+  name: string | null; // TODO: should not be here
+  email: string | null; // TODO: should not be here
+  agreedToTerms: boolean | null; // TODO: should not be here
   profile: DeveloperProfile;
+  settings: DeveloperSettings;
   projects: [ProjectItem, DeveloperProjectItem][];
-  // incomePreference: DeveloperIncomePreference | null;
-  // availability: DeveloperAvailability | null;
-  services: DeveloperServiceWithCategory[];
-}
-
-// export interface FullDeveloperProfile {
-//   // name: string | null; // TODOshould no be here
-//   // email: string | null;
-//   profile: DeveloperProfile;
-//   settings: DeveloperSettings
-//   projects: [ProjectItem, DeveloperProjectItem][];
-//   incomePreference: DeveloperIncomePreference | null;
-//   availability: DeveloperRights | null;
-//   services: DeveloperServiceWithCategory[];
-// }
-
-export interface DeveloperServiceWithCategory extends DeveloperService {
-  service: Service;
-  projectItems: ProjectItem[];
+  services: [Service, DeveloperService][];
 }

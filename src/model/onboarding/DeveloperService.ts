@@ -1,6 +1,5 @@
 import { ValidationError, Validator } from "../error";
 import { DeveloperProfileId } from "./DeveloperProfile";
-import { Currency } from "../stripe";
 import { UUID } from "../UUID";
 import { ProjectItemId, ServiceId } from "../project";
 
@@ -12,7 +11,6 @@ export interface DeveloperService {
   projectItemId: ProjectItemId;
   serviceId: ServiceId;
   hourlyRate: number;
-  currency: Currency;
   responseTimeHours: number | null;
   createdAt: Date;
   updatedAt: Date;
@@ -26,7 +24,6 @@ export namespace DeveloperServiceCompanion {
     const projectItemId = validator.requiredString("project_item_id");
     const serviceId = validator.requiredString("service_id");
     const hourlyRate = validator.requiredNumber("hourly_rate");
-    const currency = validator.requiredEnum("currency", Object.values(Currency) as Currency[]);
     const responseTimeHours = validator.optionalNumber("response_time_hours");
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
@@ -42,7 +39,6 @@ export namespace DeveloperServiceCompanion {
       projectItemId: new ProjectItemId(projectItemId),
       serviceId: new ServiceId(serviceId),
       hourlyRate,
-      currency,
       responseTimeHours: responseTimeHours ?? null,
       createdAt,
       updatedAt,
