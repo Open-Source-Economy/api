@@ -34,7 +34,7 @@ export interface DeveloperProjectItem {
   updatedAt: Date;
 }
 
-export namespace DeveloperProjectCompanion {
+export namespace DeveloperProjectItemCompanion {
   export function fromBackend(row: any): DeveloperProjectItem | ValidationError {
     const validator = new Validator(row);
     const id = validator.requiredString("id");
