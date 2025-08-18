@@ -2,6 +2,7 @@ import { DeveloperRoleType, MergeRightsType } from "../../model";
 
 export interface AddRepositoryParams {}
 
+// TODO: improve types
 export interface AddRepositoryBody {
   githubOwnerId: number; // TODO: We need to pick between id an name
   githubOwnerLogin: string; // TODO: We need to pick between id an name
