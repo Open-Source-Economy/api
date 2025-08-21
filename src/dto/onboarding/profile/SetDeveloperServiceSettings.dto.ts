@@ -1,15 +1,14 @@
 import { Currency, IncomeStreamType, OpenToOtherOpportunityType } from "../../../model";
 
-export interface SetDeveloperSettingsParams {}
+export interface SetDeveloperServiceSettingsParams {}
 
-export interface SetDeveloperSettingsBody {
-  incomeStreams: IncomeStreamType[];
+export interface SetDeveloperServiceSettingsBody {
   hourlyWeeklyCommitment: number;
   openToOtherOpportunity: OpenToOtherOpportunityType;
   hourlyRate: number;
   currency: Currency;
 }
 
-export interface SetDeveloperSettingsQuery {}
+export interface SetDeveloperServiceSettingsQuery {}
 
-export interface SetDeveloperSettingsResponse {}
+export interface SetDeveloperServiceSettingsResponse {}
