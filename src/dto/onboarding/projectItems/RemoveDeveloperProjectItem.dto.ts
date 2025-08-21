@@ -1,11 +1,11 @@
 import { ProjectItemId } from "../../../model";
 
-export interface RemoveDeveloperProjectProjectItemParams {}
+export interface RemoveDeveloperProjectItemParams {}
 
-export interface RemoveDeveloperProjectProjectItemBody {
+export interface RemoveDeveloperProjectItemBody {
   projectItemId: ProjectItemId;
 }
 
-export interface RemoveDeveloperProjectProjectItemQuery {}
+export interface RemoveDeveloperProjectItemQuery {}
 
-export interface RemoveDeveloperProjectProjectItemResponse {}
+export interface RemoveDeveloperProjectItemResponse {}
