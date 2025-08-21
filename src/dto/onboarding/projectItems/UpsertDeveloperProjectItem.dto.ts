@@ -9,9 +9,9 @@ export interface UpsertDeveloperProjectItemBody {
   roles: DeveloperRoleType[];
 }
 
-export interface UpsertDeveloperProjectItemQuery {
+export interface UpsertDeveloperProjectItemQuery {}
+
+export interface UpsertDeveloperProjectItemResponse {
   projectItem: ProjectItem;
   developerProjectItem: DeveloperProjectItem;
 }
-
-export interface UpsertDeveloperProjectItemResponse {}
