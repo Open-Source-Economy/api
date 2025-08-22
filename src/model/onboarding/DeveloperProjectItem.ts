@@ -30,6 +30,7 @@ export interface DeveloperProjectItem {
   projectItemId: ProjectItemId;
   roles: DeveloperRoleType[];
   mergeRights: MergeRightsType[];
+  comment?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -40,8 +41,9 @@ export namespace DeveloperProjectItemCompanion {
     const id = validator.requiredString("id");
     const developerProfileId = validator.requiredString("developer_profile_id");
     const projectItemId = validator.requiredString("project_item_id");
-    const roles = validator.requiredArrayOfEnums("role", Object.values(DeveloperRoleType) as DeveloperRoleType[]);
+    const roles = validator.requiredArrayOfEnums("roles", Object.values(DeveloperRoleType) as DeveloperRoleType[]);
     const mergeRights = validator.requiredArrayOfEnums("merge_rights", Object.values(MergeRightsType) as MergeRightsType[]);
+    const comment = validator.optionalString("comment"); // Added optional comment validation
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
 
@@ -56,6 +58,7 @@ export namespace DeveloperProjectItemCompanion {
       projectItemId: new ProjectItemId(projectItemId),
       roles,
       mergeRights,
+      comment, // Added comment
       createdAt,
       updatedAt,
     };

@@ -22,8 +22,11 @@ export interface DeveloperSettings {
   developerProfileId: DeveloperProfileId;
   incomeStreams: IncomeStreamType[];
   hourlyWeeklyCommitment: number;
+  hourlyWeeklyCommitmentComment?: string | null;
   openToOtherOpportunity: OpenToOtherOpportunityType;
+  openToOtherOpportunityComment?: string | null;
   hourlyRate: number;
+  hourlyRateComment?: string | null;
   currency: Currency;
   createdAt: Date;
   updatedAt: Date;
@@ -36,11 +39,14 @@ export namespace DeveloperSettingsCompanion {
     const developerProfileId = validator.requiredString("developer_profile_id");
     const incomeStreams = validator.requiredArrayOfEnums("income_streams", Object.values(IncomeStreamType) as IncomeStreamType[]);
     const hourlyWeeklyCommitment = validator.requiredNumber("hourly_weekly_commitment");
+    const hourlyWeeklyCommitmentComment = validator.optionalString("hourly_weekly_commitment_comment");
     const openToOtherOpportunity = validator.requiredEnum(
       "open_to_other_opportunity",
       Object.values(OpenToOtherOpportunityType) as OpenToOtherOpportunityType[],
     );
+    const openToOtherOpportunityComment = validator.optionalString("open_to_other_opportunity_comment");
     const hourlyRate = validator.requiredNumber("hourly_rate");
+    const hourlyRateComment = validator.optionalString("hourly_rate_comment");
     const currency = validator.requiredEnum("currency", Object.values(Currency) as Currency[]);
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
@@ -55,8 +61,11 @@ export namespace DeveloperSettingsCompanion {
       developerProfileId: new DeveloperProfileId(developerProfileId),
       incomeStreams: incomeStreams,
       hourlyWeeklyCommitment,
+      hourlyWeeklyCommitmentComment,
       openToOtherOpportunity,
+      openToOtherOpportunityComment,
       hourlyRate,
+      hourlyRateComment,
       currency,
       createdAt,
       updatedAt,

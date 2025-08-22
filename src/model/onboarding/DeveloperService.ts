@@ -11,7 +11,8 @@ export interface DeveloperService {
   projectItemId: ProjectItemId;
   serviceId: ServiceId;
   hourlyRate?: number;
-  responseTimeHours?: number;
+  responseTimeHours?: number | null;
+  comment?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,7 +25,8 @@ export namespace DeveloperServiceCompanion {
     const projectItemId = validator.requiredString("project_item_id");
     const serviceId = validator.requiredString("service_id");
     const hourlyRate = validator.optionalNumber("hourly_rate");
-    const responseTimeHours = validator.optionalNumber("response_time_hours");
+    const responseTimeHours = validator.optionalNumber("response_time_hours"); // Now optional
+    const comment = validator.optionalString("comment"); // Added optional comment validation
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
 
@@ -40,6 +42,7 @@ export namespace DeveloperServiceCompanion {
       serviceId: new ServiceId(serviceId),
       hourlyRate,
       responseTimeHours: responseTimeHours,
+      comment, // Added comment
       createdAt,
       updatedAt,
     };

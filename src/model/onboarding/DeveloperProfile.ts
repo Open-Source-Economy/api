@@ -7,6 +7,7 @@ export class DeveloperProfileId extends UUID {}
 export interface DeveloperProfile {
   id: DeveloperProfileId;
   userId: UserId;
+  contactEmail: string; // Added contactEmail
   onboardingCompleted: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -17,6 +18,7 @@ export namespace DeveloperProfileCompanion {
     const validator = new Validator(row);
     const id = validator.requiredString("id");
     const userId = validator.requiredString("user_id");
+    const contactEmail = validator.requiredString("contact_email");
     const onboardingCompleted = validator.requiredBoolean("onboarding_completed");
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
@@ -29,6 +31,7 @@ export namespace DeveloperProfileCompanion {
     return {
       id: new DeveloperProfileId(id),
       userId: new UserId(userId),
+      contactEmail,
       onboardingCompleted,
       createdAt,
       updatedAt,
