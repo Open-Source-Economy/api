@@ -14,7 +14,7 @@ export interface FullDeveloperProfile {
   profile: DeveloperProfile | null;
   settings: DeveloperSettings | null;
   projects: [ProjectItem, DeveloperProjectItem][];
-  services: [ServiceId, DeveloperServiceTODOChangeName | null][];
+  services: [Service, DeveloperServiceTODOChangeName | null][];
 }
 
 export interface DeveloperServiceTODOChangeName {
