@@ -1,11 +1,10 @@
-import { ProjectItemId, ServiceId } from "../../../../model";
+import { DeveloperServiceTODOChangeName } from "../../profile";
 
 export interface UpsertDeveloperServiceParams {}
 export interface UpsertDeveloperServiceBody {
-  serviceId: ServiceId;
-  projectItemIds: ProjectItemId[];
-  hourlyRate?: number;
-  responseTimeHours?: number;
+  developerService: DeveloperServiceTODOChangeName;
 }
 export interface UpsertDeveloperServiceQuery {}
-export interface UpsertDeveloperServiceResponse {}
+export interface UpsertDeveloperServiceResponse {
+  developerService: DeveloperServiceTODOChangeName;
+}
