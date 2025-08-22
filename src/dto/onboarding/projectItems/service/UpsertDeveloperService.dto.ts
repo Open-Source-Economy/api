@@ -1,4 +1,5 @@
 import { DeveloperServiceTODOChangeName } from "../../profile";
+import { DeveloperService } from "../../../../model";
 
 export interface UpsertDeveloperServiceParams {}
 export interface UpsertDeveloperServiceBody {
@@ -6,5 +7,5 @@ export interface UpsertDeveloperServiceBody {
 }
 export interface UpsertDeveloperServiceQuery {}
 export interface UpsertDeveloperServiceResponse {
-  developerService: DeveloperServiceTODOChangeName;
+  developerService: DeveloperService;
 }
