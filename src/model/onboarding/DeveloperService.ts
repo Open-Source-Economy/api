@@ -10,7 +10,7 @@ export interface DeveloperService {
   developerProfileId: DeveloperProfileId;
   projectItemId: ProjectItemId;
   serviceId: ServiceId;
-  hourlyRate: number;
+  hourlyRate: number; // TODO: lolo this can nullable
   responseTimeHours: number | null;
   createdAt: Date;
   updatedAt: Date;

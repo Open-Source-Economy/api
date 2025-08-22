@@ -1,4 +1,4 @@
-import { DeveloperProfile, DeveloperProjectItem, DeveloperService, DeveloperSettings, ProjectItem, Service } from "../../../model";
+import { DeveloperProfile, DeveloperProjectItem, DeveloperSettings, ProjectItem, ProjectItemId, Service } from "../../../model";
 
 export interface GetDeveloperProfileParams {}
 export interface GetDeveloperProfileBody {}
@@ -14,5 +14,12 @@ export interface FullDeveloperProfile {
   profile: DeveloperProfile | null;
   settings: DeveloperSettings | null;
   projects: [ProjectItem, DeveloperProjectItem][];
-  services: [Service, DeveloperService[]][];
+  services: DeveloperServiceTODOChangeName[];
+}
+
+export interface DeveloperServiceTODOChangeName {
+  service: Service;
+  projectItemIds: ProjectItemId[];
+  hourlyRate?: number;
+  responseTimeHours?: number;
 }
