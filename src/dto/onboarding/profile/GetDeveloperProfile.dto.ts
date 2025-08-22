@@ -14,5 +14,5 @@ export interface FullDeveloperProfile {
   profile: DeveloperProfile | null;
   settings: DeveloperSettings | null;
   projects: [ProjectItem, DeveloperProjectItem][];
-  services: [Service, DeveloperService][];
+  services: [Service, DeveloperService[]][];
 }
