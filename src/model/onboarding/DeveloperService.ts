@@ -10,8 +10,8 @@ export interface DeveloperService {
   developerProfileId: DeveloperProfileId;
   projectItemId: ProjectItemId;
   serviceId: ServiceId;
-  hourlyRate: number; // TODO: lolo this can nullable
-  responseTimeHours: number | null;
+  hourlyRate?: number;
+  responseTimeHours?: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -23,7 +23,7 @@ export namespace DeveloperServiceCompanion {
     const developerProfileId = validator.requiredString("developer_profile_id");
     const projectItemId = validator.requiredString("project_item_id");
     const serviceId = validator.requiredString("service_id");
-    const hourlyRate = validator.requiredNumber("hourly_rate");
+    const hourlyRate = validator.optionalNumber("hourly_rate");
     const responseTimeHours = validator.optionalNumber("response_time_hours");
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
@@ -39,7 +39,7 @@ export namespace DeveloperServiceCompanion {
       projectItemId: new ProjectItemId(projectItemId),
       serviceId: new ServiceId(serviceId),
       hourlyRate,
-      responseTimeHours: responseTimeHours ?? null,
+      responseTimeHours: responseTimeHours,
       createdAt,
       updatedAt,
     };

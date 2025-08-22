@@ -22,4 +22,5 @@ export interface DeveloperServiceTODOChangeName {
   projectItemIds: ProjectItemId[];
   hourlyRate?: number;
   responseTimeHours?: number;
+  comments?: string;
 }
