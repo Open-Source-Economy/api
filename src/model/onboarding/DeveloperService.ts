@@ -8,11 +8,11 @@ export class DeveloperServiceId extends UUID {}
 export interface DeveloperService {
   id: DeveloperServiceId;
   developerProfileId: DeveloperProfileId;
-  projectItemId: ProjectItemId;
+  projectItemIds: ProjectItemId[];
   serviceId: ServiceId;
   hourlyRate?: number;
   responseTimeHours?: number | null;
-  comment?: string;
+  comment?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -22,11 +22,10 @@ export namespace DeveloperServiceCompanion {
     const validator = new Validator(row);
     const id = validator.requiredString("id");
     const developerProfileId = validator.requiredString("developer_profile_id");
-    const projectItemId = validator.requiredString("project_item_id");
     const serviceId = validator.requiredString("service_id");
     const hourlyRate = validator.optionalNumber("hourly_rate");
-    const responseTimeHours = validator.optionalNumber("response_time_hours"); // Now optional
-    const comment = validator.optionalString("comment"); // Added optional comment validation
+    const responseTimeHours = validator.optionalNumber("response_time_hours");
+    const comment = validator.optionalString("comment");
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
 
@@ -38,11 +37,11 @@ export namespace DeveloperServiceCompanion {
     return {
       id: new DeveloperServiceId(id),
       developerProfileId: new DeveloperProfileId(developerProfileId),
-      projectItemId: new ProjectItemId(projectItemId),
+      projectItemIds: [], // This will be populated by the repository after fetching from the junction table
       serviceId: new ServiceId(serviceId),
       hourlyRate,
       responseTimeHours: responseTimeHours,
-      comment, // Added comment
+      comment,
       createdAt,
       updatedAt,
     };
