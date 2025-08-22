@@ -1,11 +1,11 @@
 import { ProjectItemId, ServiceId } from "../../../../model";
 
-export interface AddDeveloperServiceParams {}
-export interface AddDeveloperServiceBody {
+export interface UpsertDeveloperServiceParams {}
+export interface UpsertDeveloperServiceBody {
   serviceId: ServiceId;
   projectItemIds: ProjectItemId[];
   hourlyRate?: number;
   responseTimeHours?: number;
 }
-export interface AddDeveloperServiceQuery {}
-export interface AddDeveloperServiceResponse {}
+export interface UpsertDeveloperServiceQuery {}
+export interface UpsertDeveloperServiceResponse {}

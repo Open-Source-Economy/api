@@ -1,4 +1,4 @@
-import { DeveloperProfile, DeveloperProjectItem, DeveloperSettings, ProjectItem, ProjectItemId, Service } from "../../../model";
+import { DeveloperProfile, DeveloperProjectItem, DeveloperService, DeveloperSettings, ProjectItem, ProjectItemId, Service } from "../../../model";
 
 export interface GetDeveloperProfileParams {}
 export interface GetDeveloperProfileBody {}
