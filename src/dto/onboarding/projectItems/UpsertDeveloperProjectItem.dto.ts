@@ -7,6 +7,7 @@ export interface UpsertDeveloperProjectItemBody {
   sourceIdentifier: OwnerId | RepositoryId | string; // string being an url
   mergeRights: MergeRightsType[];
   roles: DeveloperRoleType[];
+  comments?: string;
 }
 
 export interface UpsertDeveloperProjectItemQuery {}
