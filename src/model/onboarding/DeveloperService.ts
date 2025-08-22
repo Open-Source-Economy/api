@@ -34,10 +34,13 @@ export namespace DeveloperServiceCompanion {
       return error;
     }
 
+    // The repository is responsible for fetching and populating the projectItemIds.
+    // We initialize it as an empty array here as it's not present in the main
+    // `developer_service_offering` table row.
     return {
       id: new DeveloperServiceId(id),
       developerProfileId: new DeveloperProfileId(developerProfileId),
-      projectItemIds: [], // This will be populated by the repository after fetching from the junction table
+      projectItemIds: [],
       serviceId: new ServiceId(serviceId),
       hourlyRate,
       responseTimeHours: responseTimeHours,
