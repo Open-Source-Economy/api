@@ -1,5 +1,5 @@
 import { DeveloperServiceTODOChangeName } from "../../profile";
-import { DeveloperService, UUIDCompanion } from "../../../../model";
+import { DeveloperService, ResponseTimeTypeCompanion, UUIDCompanion } from "../../../../model";
 import Joi from "joi";
 
 export interface UpsertDeveloperServiceParams {}
@@ -26,10 +26,8 @@ export namespace UpsertDeveloperServiceCompanion {
         "number.base": "Hourly rate must be a number",
         "number.min": "Hourly rate cannot be less than {{#limit}}",
       }),
-      responseTimeHours: Joi.number().integer().min(0).optional().messages({
-        "number.base": "Response time in hours must be a number",
-        "number.integer": "Response time in hours must be an integer",
-        "number.min": "Response time in hours cannot be less than {{#limit}}",
+      responseTimeHours: ResponseTimeTypeCompanion.schema.optional().messages({
+        "any.required": "Response time is required",
       }),
       comments: Joi.string().trim().allow("").optional().messages({
         "string.trim": "Comments cannot consist only of spaces",

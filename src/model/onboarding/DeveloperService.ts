@@ -2,6 +2,7 @@ import { ValidationError, Validator } from "../error";
 import { DeveloperProfileId } from "./DeveloperProfile";
 import { UUID } from "../UUID";
 import { ProjectItemId, ServiceId } from "../project";
+import { ResponseTimeType } from "./ResponseTimeType";
 
 export class DeveloperServiceId extends UUID {}
 
@@ -11,7 +12,7 @@ export interface DeveloperService {
   projectItemIds: ProjectItemId[];
   serviceId: ServiceId;
   hourlyRate?: number;
-  responseTimeHours?: number | null;
+  responseTimeHours?: ResponseTimeType | null;
   comment?: string | null;
   createdAt: Date;
   updatedAt: Date;
@@ -24,7 +25,7 @@ export namespace DeveloperServiceCompanion {
     const developerProfileId = validator.requiredString("developer_profile_id");
     const serviceId = validator.requiredString("service_id");
     const hourlyRate = validator.optionalNumber("hourly_rate");
-    const responseTimeHours = validator.optionalNumber("response_time_hours");
+    const responseTimeHours = validator.optionalEnum("response_time_hours", Object.values(ResponseTimeType) as ResponseTimeType[]);
     const comment = validator.optionalString("comment");
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");

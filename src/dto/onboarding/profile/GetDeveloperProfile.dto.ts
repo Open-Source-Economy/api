@@ -1,4 +1,4 @@
-import { DeveloperProfile, DeveloperProjectItem, DeveloperSettings, ProjectItem, ProjectItemId, Service, ServiceId } from "../../../model";
+import { DeveloperProfile, DeveloperProjectItem, DeveloperSettings, ProjectItem, ProjectItemId, ResponseTimeType, Service, ServiceId } from "../../../model";
 import Joi from "joi";
 
 export interface GetDeveloperProfileParams {}
@@ -22,7 +22,7 @@ export interface DeveloperServiceTODOChangeName {
   serviceId: ServiceId;
   projectItemIds: ProjectItemId[];
   hourlyRate?: number;
-  responseTimeHours?: number;
+  responseTimeHours?: ResponseTimeType;
   comments?: string;
 }
 

@@ -7,3 +7,4 @@ export * from "./OpenToOtherOpportunityType";
 export * from "./ProjectType";
 export * from "./DeveloperRoleType";
 export * from "./MergeRightsType";
+export * from "./ResponseTimeType";
