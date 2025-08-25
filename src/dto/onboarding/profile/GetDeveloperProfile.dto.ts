@@ -1,4 +1,5 @@
-import { DeveloperProfile, DeveloperProjectItem, DeveloperService, DeveloperSettings, ProjectItem, ProjectItemId, Service, ServiceId } from "../../../model";
+import { DeveloperProfile, DeveloperProjectItem, DeveloperSettings, ProjectItem, ProjectItemId, Service, ServiceId } from "../../../model";
+import Joi from "joi";
 
 export interface GetDeveloperProfileParams {}
 export interface GetDeveloperProfileBody {}
@@ -9,8 +10,8 @@ export interface GetDeveloperProfileResponse {
 
 export interface FullDeveloperProfile {
   name: string | null; // TODO: should not be here
-  email: string | null; // TODO: should not be here
-  agreedToTerms: boolean | null; // TODO: should not be here
+  contactEmail: string | null;
+  agreedToTerms: boolean | null;
   profile: DeveloperProfile | null;
   settings: DeveloperSettings | null;
   projects: [ProjectItem, DeveloperProjectItem][];
@@ -23,4 +24,12 @@ export interface DeveloperServiceTODOChangeName {
   hourlyRate?: number;
   responseTimeHours?: number;
   comments?: string;
+}
+
+export namespace GetDeveloperProfileCompanion {
+  export const paramsSchema: Joi.ObjectSchema<GetDeveloperProfileParams> = Joi.object({});
+
+  export const bodySchema: Joi.ObjectSchema<GetDeveloperProfileBody> = Joi.object({});
+
+  export const querySchema: Joi.ObjectSchema<GetDeveloperProfileQuery> = Joi.object({});
 }

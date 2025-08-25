@@ -1,11 +1,6 @@
 import { UUID } from "../UUID";
 import { OwnerId, RepositoryId } from "../github";
-
-export enum ProjectItemType {
-  GITHUB_REPOSITORY = "GITHUB_REPOSITORY",
-  GITHUB_OWNER = "GITHUB_OWNER",
-  URL = "URL",
-}
+import { ProjectItemType } from "./ProjectItemType";
 
 export class ProjectItemId extends UUID {}
 

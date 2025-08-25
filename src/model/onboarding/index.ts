@@ -2,3 +2,8 @@ export * from "./DeveloperProfile";
 export * from "./DeveloperSettings";
 export * from "./DeveloperService";
 export * from "./DeveloperProjectItem";
+export * from "./IncomeStreamType";
+export * from "./OpenToOtherOpportunityType";
+export * from "./ProjectType";
+export * from "./DeveloperRoleType";
+export * from "./MergeRightsType";

@@ -1,5 +1,6 @@
 import { ValidationError, Validator } from "../error";
-import { OwnerId } from "./Owner";
+import { OwnerId, OwnerIdCompanion } from "./Owner";
+import Joi from "joi";
 
 export class RepositoryId {
   ownerId: OwnerId;
@@ -148,4 +149,24 @@ export class Repository {
 
     return new Repository(repositoryId, htmlUrl, description);
   }
+}
+
+export namespace RepositoryIdCompanion {
+  export const schema: Joi.ObjectSchema<RepositoryId> = Joi.object({
+    ownerId: OwnerIdCompanion.schema.required().messages({
+      "any.required": "Owner ID is required for a repository",
+      "object.base": "Owner ID must be an object",
+    }),
+    name: Joi.string().trim().min(1).required().messages({
+      "string.empty": "Repository name cannot be empty",
+      "string.min": "Repository name must contain at least one character",
+      "string.trim": "Repository name cannot consist only of spaces",
+      "any.required": "Repository name is required",
+    }),
+    githubId: Joi.number().integer().min(1).optional().messages({
+      "number.base": "GitHub ID must be a number",
+      "number.integer": "GitHub ID must be an integer",
+      "number.min": "GitHub ID cannot be less than {{#limit}}",
+    }),
+  });
 }

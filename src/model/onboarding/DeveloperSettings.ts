@@ -2,18 +2,8 @@ import { ValidationError, Validator } from "../error";
 import { Currency } from "../stripe";
 import { UUID } from "../UUID";
 import { DeveloperProfileId } from "./DeveloperProfile";
-
-export enum IncomeStreamType {
-  ROYALTIES = "royalties",
-  SERVICES = "services",
-  DONATIONS = "donations",
-}
-
-export enum OpenToOtherOpportunityType {
-  YES = "yes",
-  MAYBE = "maybe",
-  NO = "no",
-}
+import { OpenToOtherOpportunityType } from "./OpenToOtherOpportunityType";
+import { IncomeStreamType } from "./IncomeStreamType";
 
 export class DeveloperSettingsId extends UUID {}
 

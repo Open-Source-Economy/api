@@ -2,27 +2,10 @@ import { ValidationError, Validator } from "../error";
 import { DeveloperProfileId } from "./DeveloperProfile";
 import { UUID } from "../UUID";
 import { ProjectItemId } from "../project";
+import { DeveloperRoleType } from "./DeveloperRoleType";
+import { MergeRightsType } from "./MergeRightsType";
 
 export class DeveloperProjectItemId extends UUID {}
-
-export enum ProjectType {
-  GITHUB = "github",
-  MANUAL = "manual",
-}
-
-export enum DeveloperRoleType {
-  CREATOR_FOUNDER = "creator_founder",
-  PROJECT_LEAD = "project_lead",
-  CORE_DEVELOPER = "core_developer",
-  MAINTAINER = "maintainer",
-}
-
-export enum MergeRightsType {
-  FULL_RIGHTS = "full_rights",
-  SPECIFIC_AREAS = "specific_areas",
-  NO_RIGHTS = "no_rights",
-  FORMAL_PROCESS = "formal_process",
-}
 
 export interface DeveloperProjectItem {
   id: DeveloperProjectItemId;
