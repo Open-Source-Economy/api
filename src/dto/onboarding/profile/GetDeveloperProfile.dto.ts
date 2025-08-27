@@ -29,7 +29,7 @@ export interface FullDeveloperProfile {
 }
 
 export interface DeveloperProjectItemEntry {
-  service: ProjectItem;
+  projectItem: ProjectItem;
   developerProjectItem: DeveloperProjectItem;
 }
 
