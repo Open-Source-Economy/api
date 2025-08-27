@@ -30,7 +30,7 @@ export interface FullDeveloperProfile {
 
 export interface DeveloperProjectItemEntry {
   service: ProjectItem;
-  developerProjectItem: DeveloperProjectItem | null;
+  developerProjectItem: DeveloperProjectItem;
 }
 
 export interface DeveloperServiceEntry {
