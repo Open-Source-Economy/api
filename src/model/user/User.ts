@@ -1,5 +1,5 @@
 import { LocalUser } from "./LocalUser";
-import { ThirdPartyUser } from "./ThirdPartyUser";
+import { GithubData, ThirdPartyUser } from "./ThirdPartyUser";
 import { Currency } from "../stripe";
 import { UUID } from "../UUID";
 
@@ -10,13 +10,8 @@ export enum UserRole {
   USER = "user",
 }
 
-export enum UserType {
-  THIRD_PARTY = "third_party",
-  LOCAL = "local",
-}
-
 export const userUtils = {
-  githubData(user: User): ThirdPartyUser["providerData"] | null {
+  githubData(user: User): GithubData | null {
     if ("providerData" in user.data) {
       return user.data.providerData;
     } else {
@@ -25,10 +20,10 @@ export const userUtils = {
   },
 
   email(user: User): string | null {
-    if ("email" in user.data) {
+    if (user.data instanceof LocalUser) {
       return user.data.email;
     } else {
-      return null;
+      return user.data.email;
     }
   },
 };
@@ -36,7 +31,6 @@ export const userUtils = {
 export interface User extends Express.User {
   id: UserId;
   name: string | null;
-  type: UserType;
   data: LocalUser | ThirdPartyUser;
   role: UserRole;
   preferredCurrency?: Currency;
