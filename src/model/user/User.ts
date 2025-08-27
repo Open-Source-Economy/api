@@ -10,6 +10,11 @@ export enum UserRole {
   USER = "user",
 }
 
+export enum UserType {
+  THIRD_PARTY = "third_party",
+  LOCAL = "local",
+}
+
 export const userUtils = {
   githubData(user: User): ThirdPartyUser["providerData"] | null {
     if ("providerData" in user.data) {
@@ -31,6 +36,7 @@ export const userUtils = {
 export interface User extends Express.User {
   id: UserId;
   name: string | null;
+  type: UserType;
   data: LocalUser | ThirdPartyUser;
   role: UserRole;
   preferredCurrency?: Currency;
