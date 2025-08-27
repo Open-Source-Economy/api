@@ -1,4 +1,14 @@
-import { DeveloperProfile, DeveloperProjectItem, DeveloperSettings, ProjectItem, ProjectItemId, ResponseTimeType, Service, ServiceId } from "../../../model";
+import {
+  DeveloperProfile,
+  DeveloperProjectItem,
+  DeveloperService,
+  DeveloperSettings,
+  ProjectItem,
+  ProjectItemId,
+  ResponseTimeType,
+  Service,
+  ServiceId,
+} from "../../../model";
 import Joi from "joi";
 
 export interface GetDeveloperProfileParams {}
@@ -14,16 +24,18 @@ export interface FullDeveloperProfile {
   agreedToTerms: boolean | null;
   profile: DeveloperProfile | null;
   settings: DeveloperSettings | null;
-  projects: [ProjectItem, DeveloperProjectItem][];
-  services: [Service, DeveloperServiceTODOChangeName | null][];
+  projects: DeveloperProjectItemEntry[];
+  services: DeveloperServiceEntry[];
 }
 
-export interface DeveloperServiceTODOChangeName {
-  serviceId: ServiceId;
-  projectItemIds: ProjectItemId[];
-  hourlyRate?: number;
-  responseTimeHours?: ResponseTimeType;
-  comments?: string;
+export interface DeveloperProjectItemEntry {
+  service: ProjectItem;
+  developerProjectItem: DeveloperProjectItemTODOChangeName | null;
+}
+
+export interface DeveloperServiceEntry {
+  service: Service;
+  developerService: DeveloperService | null;
 }
 
 export namespace GetDeveloperProfileCompanion {
