@@ -1,16 +1,9 @@
 import { LocalUser } from "./LocalUser";
-import { GithubData, ThirdPartyUser } from "./ThirdPartyUser";
-import { Owner } from "../github";
-import { ValidationError, Validator } from "../error";
+import { ThirdPartyUser } from "./ThirdPartyUser";
 import { Currency } from "../stripe";
+import { UUID } from "../UUID";
 
-export class UserId {
-  uuid: string;
-
-  constructor(uuid: string) {
-    this.uuid = uuid;
-  }
-}
+export class UserId extends UUID {}
 
 export enum UserRole {
   SUPER_ADMIN = "super_admin",
@@ -18,7 +11,7 @@ export enum UserRole {
 }
 
 export const userUtils = {
-  githubData(user: User): GithubData | null {
+  githubData(user: User): ThirdPartyUser["providerData"] | null {
     if ("providerData" in user.data) {
       return user.data.providerData;
     } else {
@@ -27,70 +20,19 @@ export const userUtils = {
   },
 
   email(user: User): string | null {
-    if (user.data instanceof LocalUser) {
+    if ("email" in user.data) {
       return user.data.email;
     } else {
-      return user.data.email;
+      return null;
     }
   },
 };
 
-export class User implements Express.User {
+export interface User extends Express.User {
   id: UserId;
   name: string | null;
   data: LocalUser | ThirdPartyUser;
   role: UserRole;
   preferredCurrency?: Currency;
   termsAcceptedVersion?: string;
-
-  constructor(
-    id: UserId,
-    name: string | null,
-    data: LocalUser | ThirdPartyUser,
-    role: UserRole,
-    preferredCurrency: Currency | undefined,
-    termsAcceptedVersion: string | undefined,
-  ) {
-    this.id = id;
-    this.name = name;
-    this.data = data;
-    this.role = role;
-    this.preferredCurrency = preferredCurrency;
-    this.termsAcceptedVersion = termsAcceptedVersion;
-  }
-
-  static fromRaw(row: any, owner: Owner | null = null): User | ValidationError {
-    const validator = new Validator(row);
-    const id = validator.requiredString("id");
-    const name = validator.optionalString("name");
-    const role = validator.requiredEnum("role", Object.values(UserRole) as UserRole[]);
-    const preferredCurrency = validator.optionalEnum("preferred_currency", Object.values(Currency) as Currency[]);
-    const termsAcceptedVersion = validator.optionalString("terms_accepted_version");
-
-    const error = validator.getFirstError();
-    if (error) {
-      return error;
-    }
-
-    let user: LocalUser | ThirdPartyUser | ValidationError;
-
-    if (row.hashed_password) {
-      user = LocalUser.fromRaw(row);
-    } else if (row.provider) {
-      user = ThirdPartyUser.fromRaw(row, owner);
-    } else {
-      return new ValidationError("Unable to determine user type", row);
-    }
-
-    if (user instanceof ValidationError) {
-      return user;
-    }
-
-    const enumError = validator.getFirstError();
-    if (enumError) {
-      return enumError;
-    }
-
-    return new User(new UserId(id), name ?? null, user, role, preferredCurrency, termsAcceptedVersion);
-  }
 }

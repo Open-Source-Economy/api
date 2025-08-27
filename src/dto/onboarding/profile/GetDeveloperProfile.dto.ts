@@ -1,14 +1,4 @@
-import {
-  DeveloperProfile,
-  DeveloperProjectItem,
-  DeveloperService,
-  DeveloperSettings,
-  ProjectItem,
-  ProjectItemId,
-  ResponseTimeType,
-  Service,
-  ServiceId,
-} from "../../../model";
+import { DeveloperProfile, DeveloperProjectItem, DeveloperService, DeveloperSettings, ProjectItem, Service } from "../../../model";
 import Joi from "joi";
 
 export interface GetDeveloperProfileParams {}
