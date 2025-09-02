@@ -1,7 +1,7 @@
 import { Service, ServiceId } from "./Service";
+import { ServiceType } from "./ServiceType";
 
 export interface ServiceHierarchyItem {
-  service: Service;
-  level: number;
-  ancestors: ServiceId[];
+  category: ServiceType;
+  services: Service[];
 }
