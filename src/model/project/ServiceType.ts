@@ -117,22 +117,22 @@ export function getSubServiceOptions(serviceType: string): DropdownOption[] {
   }
 }
 
-// Create an explicit mapping between ServiceType and its corresponding subservices
-type SubServiceTypeMap = {
-  [ServiceType.SUPPORT]: SupportSubServiceType;
-  [ServiceType.DEVELOPMENT]: DevelopmentSubServiceType;
-  [ServiceType.OPERATION]: OperationSubServiceType;
-  [ServiceType.ADVISORY]: AdvisorySubServiceType;
-};
+// // Create an explicit mapping between ServiceType and its corresponding subservices
+// type SubServiceTypeMap = {
+//   [ServiceType.SUPPORT]: SupportSubServiceType;
+//   [ServiceType.DEVELOPMENT]: DevelopmentSubServiceType;
+//   [ServiceType.OPERATION]: OperationSubServiceType;
+//   [ServiceType.ADVISORY]: AdvisorySubServiceType;
+// };
 
-// Create the planLookup type for each ServiceType to have its subservices correctly typed
-type SubServicePlanMap = Record<Priority, PlanProductType>;
-
-type PlanLookup = {
-  [key in ServiceType]: {
-    [subKey in SubServiceTypeMap[key]]: SubServicePlanMap;
-  };
-};
+// // Create the planLookup type for each ServiceType to have its subservices correctly typed
+// type SubServicePlanMap = Record<Priority, PlanProductType>;
+//
+// type PlanLookup = {
+//   [key in ServiceType]: {
+//     [subKey in SubServiceTypeMap[key]]: SubServicePlanMap;
+//   };
+// };
 
 // // Define planLookup with explicit mapping
 // const planLookup: PlanLookup = {
