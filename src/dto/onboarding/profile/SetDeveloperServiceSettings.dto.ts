@@ -5,14 +5,14 @@ export interface SetDeveloperServiceSettingsParams {}
 
 export interface SetDeveloperServiceSettingsBody {
   hourlyWeeklyCommitment: number;
-  hourlyWeeklyCommitmentComments: string;
+  hourlyWeeklyCommitmentComments?: string;
 
-  openToOtherOpportunity: OpenToOtherOpportunityType;
+  openToOtherOpportunity?: OpenToOtherOpportunityType;
   openToOtherOpportunityComments: string;
 
   hourlyRate: number;
   currency: Currency;
-  hourlyRateComments: string;
+  hourlyRateComments?: string;
 }
 
 export interface SetDeveloperServiceSettingsQuery {}
