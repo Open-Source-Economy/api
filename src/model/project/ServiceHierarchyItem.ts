@@ -1,4 +1,4 @@
-import { Service, ServiceId } from "./Service";
+import { Service } from "./Service";
 import { ServiceType } from "./ServiceType";
 
 export interface ServiceHierarchyItem {

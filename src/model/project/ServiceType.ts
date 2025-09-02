@@ -1,5 +1,3 @@
-import { PlanProductType } from "../stripe";
-
 export enum ServiceType {
   SUPPORT = "Support",
   DEVELOPMENT = "Development",
