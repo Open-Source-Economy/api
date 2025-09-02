@@ -5,6 +5,7 @@ export enum ServiceType {
   DEVELOPMENT = "Development",
   OPERATION = "Operation",
   ADVISORY = "Advisory",
+  CUSTOM = "Custom",
 }
 
 export enum Priority {
@@ -133,115 +134,115 @@ type PlanLookup = {
   };
 };
 
-// Define planLookup with explicit mapping
-const planLookup: PlanLookup = {
-  [ServiceType.SUPPORT]: {
-    [SupportSubServiceType.BUG_FIXES]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [SupportSubServiceType.NEW_FEATURES]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [SupportSubServiceType.CODE_MAINTENANCE]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-  },
-  [ServiceType.DEVELOPMENT]: {
-    [DevelopmentSubServiceType.TECHNICAL_ASSISTANCE]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [DevelopmentSubServiceType.DEPLOYMENT_GUIDANCE]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [DevelopmentSubServiceType.CUSTOMER_SUPPORT]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-  },
-  [ServiceType.OPERATION]: {
-    [OperationSubServiceType.INCIDENT_RESPONSE]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [OperationSubServiceType.PROACTIVE_MAINTENANCE]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [OperationSubServiceType.SUPERVISION]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-  },
-  [ServiceType.ADVISORY]: {
-    [AdvisorySubServiceType.ARCHITECTURE_DESIGN]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [AdvisorySubServiceType.TECHNOLOGY_ASSESSMENT]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-    [AdvisorySubServiceType.SECURITY_PERFORMANCE]: {
-      [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
-      [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
-    },
-  },
-};
-
-// Function to determine the available plan
-export function available_from_plan(
-  serviceType: ServiceType,
-  subServiceType: SupportSubServiceType | DevelopmentSubServiceType | OperationSubServiceType | AdvisorySubServiceType,
-  priority: Priority,
-): PlanProductType {
-  const servicePlans = planLookup[serviceType];
-
-  // Ensure service type exists in planLookup
-  if (!servicePlans) {
-    throw new Error(`Invalid service type: ${serviceType}`);
-  }
-
-  // Ensure subservice type exists under the service type
-  // @ts-ignore
-  const subServicePlans = servicePlans[subServiceType];
-  if (!subServicePlans) {
-    throw new Error(`Invalid subservice type: ${subServiceType} for service: ${serviceType}`);
-  }
-
-  // Ensure the priority is valid
-  const plan = subServicePlans[priority];
-  if (plan === undefined) {
-    throw new Error(`Invalid priority: ${priority} for subservice: ${subServiceType}`);
-  }
-
-  return plan;
-}
+// // Define planLookup with explicit mapping
+// const planLookup: PlanLookup = {
+//   [ServiceType.SUPPORT]: {
+//     [SupportSubServiceType.BUG_FIXES]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [SupportSubServiceType.NEW_FEATURES]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [SupportSubServiceType.CODE_MAINTENANCE]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//   },
+//   [ServiceType.DEVELOPMENT]: {
+//     [DevelopmentSubServiceType.TECHNICAL_ASSISTANCE]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [DevelopmentSubServiceType.DEPLOYMENT_GUIDANCE]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [DevelopmentSubServiceType.CUSTOMER_SUPPORT]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//   },
+//   [ServiceType.OPERATION]: {
+//     [OperationSubServiceType.INCIDENT_RESPONSE]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [OperationSubServiceType.PROACTIVE_MAINTENANCE]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [OperationSubServiceType.SUPERVISION]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//   },
+//   [ServiceType.ADVISORY]: {
+//     [AdvisorySubServiceType.ARCHITECTURE_DESIGN]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [AdvisorySubServiceType.TECHNOLOGY_ASSESSMENT]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//     [AdvisorySubServiceType.SECURITY_PERFORMANCE]: {
+//       [Priority.LOW]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.MEDIUM]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.HIGH]: PlanProductType.INDIVIDUAL_PLAN,
+//       [Priority.CRITICAL]: PlanProductType.INDIVIDUAL_PLAN,
+//     },
+//   },
+// };
+//
+// // Function to determine the available plan
+// export function available_from_plan(
+//   serviceType: ServiceType,
+//   subServiceType: SupportSubServiceType | DevelopmentSubServiceType | OperationSubServiceType | AdvisorySubServiceType,
+//   priority: Priority,
+// ): PlanProductType {
+//   const servicePlans = planLookup[serviceType];
+//
+//   // Ensure service type exists in planLookup
+//   if (!servicePlans) {
+//     throw new Error(`Invalid service type: ${serviceType}`);
+//   }
+//
+//   // Ensure subservice type exists under the service type
+//   // @ts-ignore
+//   const subServicePlans = servicePlans[subServiceType];
+//   if (!subServicePlans) {
+//     throw new Error(`Invalid subservice type: ${subServiceType} for service: ${serviceType}`);
+//   }
+//
+//   // Ensure the priority is valid
+//   const plan = subServicePlans[priority];
+//   if (plan === undefined) {
+//     throw new Error(`Invalid priority: ${priority} for subservice: ${subServiceType}`);
+//   }
+//
+//   return plan;
+// }

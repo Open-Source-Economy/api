@@ -5,7 +5,6 @@ export interface CreateCustomServiceBody {
   name: string;
   description: string;
   hasResponseTime?: boolean;
-  details?: string;
 }
 export interface CreateCustomServiceQuery {}
 export interface CreateCustomServiceResponse {}
@@ -20,11 +19,14 @@ export namespace CreateCustomServiceCompanion {
       "string.trim": "Service name cannot consist only of spaces",
       "any.required": "Service name is required",
     }),
+    description: Joi.string().trim().min(1).required().messages({
+      "string.empty": "Service description cannot be empty",
+      "string.min": "Service description must contain at least one character",
+      "string.trim": "Service description cannot consist only of spaces",
+      "any.required": "Service description is required",
+    }),
     hasResponseTime: Joi.boolean().optional().messages({
       "boolean.base": "Has response time must be a boolean",
-    }),
-    details: Joi.string().trim().allow("").optional().messages({
-      "string.trim": "Details cannot consist only of spaces",
     }),
   });
 
