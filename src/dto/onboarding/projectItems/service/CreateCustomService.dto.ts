@@ -3,6 +3,7 @@ import Joi from "joi";
 export interface CreateCustomServiceParams {}
 export interface CreateCustomServiceBody {
   name: string;
+  description: string;
   hasResponseTime?: boolean;
   details?: string;
 }
