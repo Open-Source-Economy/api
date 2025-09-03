@@ -1,10 +1,10 @@
-import { ProjectItemId, UUIDCompanion } from "../../../model";
+import { DeveloperProjectItemId, ProjectItemId, UUIDCompanion } from "../../../model";
 import Joi from "joi";
 
 export interface RemoveDeveloperProjectItemParams {}
 
 export interface RemoveDeveloperProjectItemBody {
-  projectItemId: ProjectItemId;
+  developerProjectItemId: DeveloperProjectItemId;
 }
 
 export interface RemoveDeveloperProjectItemQuery {}
@@ -15,8 +15,8 @@ export namespace RemoveDeveloperProjectItemCompanion {
   export const paramsSchema: Joi.ObjectSchema<RemoveDeveloperProjectItemParams> = Joi.object({});
 
   export const bodySchema: Joi.ObjectSchema<RemoveDeveloperProjectItemBody> = Joi.object({
-    projectItemId: Joi.object({
-      uuid: UUIDCompanion.schema.label("Project Item ID"),
+    developerProjectItemId: Joi.object({
+      uuid: UUIDCompanion.schema.label("Developer Project Item ID"),
     }).required(),
   });
 
