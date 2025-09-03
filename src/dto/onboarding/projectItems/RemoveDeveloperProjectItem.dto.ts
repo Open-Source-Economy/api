@@ -15,7 +15,9 @@ export namespace RemoveDeveloperProjectItemCompanion {
   export const paramsSchema: Joi.ObjectSchema<RemoveDeveloperProjectItemParams> = Joi.object({});
 
   export const bodySchema: Joi.ObjectSchema<RemoveDeveloperProjectItemBody> = Joi.object({
-    projectItemId: UUIDCompanion.schema.label("Project Item ID"),
+    projectItemId: Joi.object({
+      uuid: UUIDCompanion.schema.label("Project Item ID"),
+    }).required(),
   });
 
   export const querySchema: Joi.ObjectSchema<RemoveDeveloperProjectItemQuery> = Joi.object({});
