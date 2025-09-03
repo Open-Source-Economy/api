@@ -52,8 +52,8 @@ export class Owner {
   id: OwnerId;
   type: OwnerType;
   htmlUrl: string;
-  private avatarUrl?: string;
-  displayAvatarUrl?: string | null;
+  avatarUrl?: string;
+  displayAvatarUrl?: string;
 
   constructor(id: OwnerId, type: OwnerType, htmlUrl: string, avatarUrl?: string) {
     this.id = id;
@@ -62,7 +62,7 @@ export class Owner {
     this.avatarUrl = avatarUrl;
 
     if (id.login === "apache") {
-      this.displayAvatarUrl = null; // Apache Foundation has a special case for their avatar URL due regulation.
+      this.displayAvatarUrl = undefined; // Apache Foundation has a special case for their avatar URL due regulation.
     } else {
       this.displayAvatarUrl = avatarUrl;
     }
