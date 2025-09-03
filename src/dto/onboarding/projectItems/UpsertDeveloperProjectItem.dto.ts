@@ -4,13 +4,12 @@ import {
   DeveloperRoleTypeCompanion,
   MergeRightsType,
   MergeRightsTypeCompanion,
-  OwnerId,
   OwnerIdCompanion,
   ProjectItem,
   ProjectItemType,
   ProjectItemTypeCompanion,
-  RepositoryId,
   RepositoryIdCompanion,
+  SourceIdentifier,
 } from "../../../model";
 import Joi from "joi";
 
@@ -18,7 +17,7 @@ export interface UpsertDeveloperProjectItemParams {}
 
 export interface UpsertDeveloperProjectItemBody {
   projectItemType: ProjectItemType;
-  sourceIdentifier: OwnerId | RepositoryId | string; // string being an url
+  sourceIdentifier: SourceIdentifier;
   mergeRights: MergeRightsType[];
   roles: DeveloperRoleType[];
   comments?: string;

@@ -4,10 +4,12 @@ import { ProjectItemType } from "./ProjectItemType";
 
 export class ProjectItemId extends UUID {}
 
+export type SourceIdentifier = OwnerId | RepositoryId | string; // string being an url
+
 export interface ProjectItem {
   id: ProjectItemId;
   projectItemType: ProjectItemType;
-  sourceIdentifier: OwnerId | RepositoryId | string; // string being an url
+  sourceIdentifier: SourceIdentifier;
   createdAt: Date;
   updatedAt: Date;
 }
