@@ -1,14 +1,15 @@
 import Joi from "joi";
 
 export enum ResponseTimeType {
-  FourHours = "4 hours",
-  TwelveHours = "12 hours",
-  OneBusinessDay = "1 business day",
-  TwoBusinessDays = "2 business day",
-  ThreeBusinessDays = "3 business day",
-  FourBusinessDays = "4 business day",
-  FiveBusinessDays = "5 business day",
-  SevenBusinessDays = "7 business day",
+  None = "none",
+  FourHours = "4_hours",
+  TwelveHours = "12_hours",
+  OneBusinessDay = "11_business_day",
+  TwoBusinessDays = "22_business_day",
+  ThreeBusinessDays = "33_business_day",
+  FourBusinessDays = "44_business_day",
+  FiveBusinessDays = "55_business_day",
+  SevenBusinessDays = "77_business_day",
 }
 
 export namespace ResponseTimeTypeCompanion {
