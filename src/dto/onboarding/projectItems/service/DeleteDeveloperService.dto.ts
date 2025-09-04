@@ -12,7 +12,10 @@ export namespace DeleteDeveloperServiceCompanion {
   export const paramsSchema: Joi.ObjectSchema<DeleteDeveloperServiceParams> = Joi.object({});
 
   export const bodySchema: Joi.ObjectSchema<DeleteDeveloperServiceBody> = Joi.object({
-    serviceId: UUIDCompanion.schema.label("Service ID"),
+    // Changed from UUIDCompanion.schema to Joi.object with a 'uuid' key
+    serviceId: Joi.object({
+      uuid: UUIDCompanion.schema.label("Service ID"),
+    }).required(),
   });
 
   export const querySchema: Joi.ObjectSchema<DeleteDeveloperServiceQuery> = Joi.object({});
