@@ -21,14 +21,26 @@ export namespace UpsertDeveloperServiceCompanion {
   export const paramsSchema: Joi.ObjectSchema<UpsertDeveloperServiceParams> = Joi.object({}).unknown(false);
 
   export const bodySchema: Joi.ObjectSchema<UpsertDeveloperServiceBody> = Joi.object({
-    projectItemIds: Joi.array().items(UUIDCompanion.schema.label("Project Item ID")).min(1).unique().required().messages({
-      "array.base": "Project item IDs must be an array.",
-      "array.min": "Please provide at least one project item ID.",
-      "array.unique": "Project item IDs must be unique.",
-      "any.required": "Project item IDs are required.",
-    }),
+    projectItemIds: Joi.array()
+      .items(
+        Joi.object({
+          uuid: UUIDCompanion.schema.label("Project Item ID"),
+        }).required(),
+      )
+      .min(1)
+      .unique()
+      .required()
+      .messages({
+        "array.base": "Project item IDs must be an array of objects.",
+        "array.min": "Please provide at least one project item ID.",
+        "array.unique": "Project item IDs must be unique.",
+        "any.required": "Project item IDs are required.",
+      }),
 
-    serviceId: UUIDCompanion.schema.label("Service ID").required(),
+    serviceId: Joi.object({
+      // Change from UUIDCompanion.schema to a Joi.object validation
+      uuid: UUIDCompanion.schema.label("Service ID"),
+    }).required(),
 
     hourlyRate: Joi.number().min(0).precision(2).optional().messages({
       "number.base": "Hourly rate must be a number.",
