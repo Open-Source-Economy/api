@@ -286,6 +286,21 @@ export class Validator {
     return value as EnumType;
   }
 
+  optionalArrayOfEnums<EnumType extends string>(path: string | string[], enumType: EnumType[]): EnumType[] | undefined {
+    const value = this.getValue(path);
+
+    if (value === undefined || value === null) {
+      return undefined;
+    }
+
+    if (!Array.isArray(value)) {
+      this.errors.push(new ArrayValidationError(path, value, this.data));
+      return undefined;
+    }
+
+    return this.validateArrayOfEnums(path, value, enumType);
+  }
+
   requiredArrayOfEnums<EnumType extends string>(path: string | string[], enumType: EnumType[]): EnumType[] {
     const value = this.getValue(path);
 
@@ -294,10 +309,14 @@ export class Validator {
       return [];
     }
 
+    return this.validateArrayOfEnums(path, value, enumType);
+  }
+
+  private validateArrayOfEnums<EnumType extends string>(path: string | string[], array: any[], enumType: EnumType[]): EnumType[] {
     const result: EnumType[] = [];
     let hasError = false;
 
-    for (const element of value) {
+    for (const element of array) {
       if (typeof element !== "string" || !enumType.includes(element as EnumType)) {
         this.errors.push(new EnumValidationError(path, element, this.data, enumType as string[]));
         hasError = true;
@@ -306,8 +325,10 @@ export class Validator {
       }
     }
 
-    // If there was any error, return an empty array or the partial array depending on your desired behavior.
-    // Here we'll return the partially validated array and let the caller handle the error via getFirstError().
+    if (hasError) {
+      return [];
+    }
+
     return result;
   }
 
