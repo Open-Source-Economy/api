@@ -1,10 +1,37 @@
 import Joi from "joi";
 
 export enum DeveloperRoleType {
-  CREATOR_FOUNDER = "creator_founder",
-  PROJECT_LEAD = "project_lead",
-  CORE_DEVELOPER = "core_developer",
+  NONE = "none",
+  // Generic Open-Source Roles
+  OCCASIONAL_CONTRIBUTOR = "occasional_contributor",
+  ACTIVE_CONTRIBUTOR = "active contributor",
+  COMMITTER = "committer",
   MAINTAINER = "maintainer",
+  CORE_TEAM_MEMBER = "core_team_member",
+  FOUNDER = "Founder",
+
+  // Generic Governance & Leadership Roles
+  BOARD_MEMBER = "board_member",
+  STEERING_COMMITTEE_MEMBER = "steering_committee_member",
+  PROJECT_LEAD = "project_lead",
+  WORKING_GROUP_CHAIR = "working_group_chair",
+  BENEVOLENT_DICTATOR_FOR_LIFE = "benevolent_dictator_for_life",
+
+  // Apache Software Foundation (ASF) Roles
+  ASF_CONTRIBUTOR = "asf_contributor",
+  ASF_COMMITTER = "asf_committer",
+  ASF_PMC_MEMBER = "asf_pmc_member",
+
+  // Linux Foundation & CNCF Roles
+  LF_GOVERNING_BOARD_MEMBER = "lf_governing_board_member",
+  TSC_MEMBER = "tsc_member",
+  CNCF_TOC_MEMBER = "cncf_toc_member",
+  LINUX_FOUNDATION_FELLOW = "linux_foundation_fellow",
+
+  // Corporate Membership Roles
+  STRATEGIC_MEMBER = "strategic_member",
+  CONTRIBUTING_MEMBER = "contributing_member",
+  ASSOCIATE_MEMBER = "associate_member",
 }
 
 export namespace DeveloperRoleTypeCompanion {

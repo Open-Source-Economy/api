@@ -1,10 +1,35 @@
 import Joi from "joi";
 
 export enum MergeRightsType {
-  FULL_RIGHTS = "full_rights",
-  SPECIFIC_AREAS = "specific_areas",
-  NO_RIGHTS = "no_rights",
-  FORMAL_PROCESS = "formal_process",
+  // No merge rights or permissions
+  NONE = "none",
+
+  // Can review and approve pull requests but cannot merge them
+  REVIEWER = "reviewer",
+
+  // Can merge into specific, non-critical branches (e.g., docs, feature branches)
+  LIMITED = "limited",
+
+  // Can merge into a specific, well-defined module or part of the codebase
+  MAINTAINER = "maintainer",
+
+  // Has full merge rights to the entire project's repository
+  FULL_COMMITTER = "full_committer",
+
+  // A specialized maintainer responsible for a specific component or subsystem
+  SUBSYSTEM_MAINTAINER = "subsystem_maintainer",
+
+  // A committer with rights delegated for a specific task or limited scope
+  DELEGATED_COMMITTER = "delegated_committer",
+
+  // Can propose a merge but it requires a majority vote from other committers
+  VOTE_BASED_COMMITTER = "vote_based_committer",
+
+  // A senior committer with temporary rights to manage a final release
+  RELEASE_MANAGER = "release_manager",
+
+  // Former committer who no longer has active merge rights
+  EMERITUS = "emeritus",
 }
 
 export namespace MergeRightsTypeCompanion {
