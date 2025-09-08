@@ -1,9 +1,10 @@
 export enum ServiceType {
-  SUPPORT = "Support",
-  DEVELOPMENT = "Development",
-  OPERATION = "Operation",
-  ADVISORY = "Advisory",
-  CUSTOM = "Custom",
+  SUPPORT = "support",
+  DEVELOPMENT = "development",
+  // OPERATION = "operation",
+  ADVISORY = "advisory",
+  SECURITY_AND_COMPLIANCE = "security_and_compliance",
+  CUSTOM = "custom",
 }
 
 export enum Priority {

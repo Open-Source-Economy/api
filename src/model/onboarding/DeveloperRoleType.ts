@@ -4,11 +4,11 @@ export enum DeveloperRoleType {
   NONE = "none",
   // Generic Open-Source Roles
   OCCASIONAL_CONTRIBUTOR = "occasional_contributor",
-  ACTIVE_CONTRIBUTOR = "active contributor",
+  ACTIVE_CONTRIBUTOR = "active_contributor",
   COMMITTER = "committer",
   MAINTAINER = "maintainer",
   CORE_TEAM_MEMBER = "core_team_member",
-  FOUNDER = "Founder",
+  FOUNDER = "founder",
 
   // Generic Governance & Leadership Roles
   BOARD_MEMBER = "board_member",
