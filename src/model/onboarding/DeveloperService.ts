@@ -26,7 +26,7 @@ export namespace DeveloperServiceCompanion {
     const developerProfileId = validator.requiredString("developer_profile_id");
     const serviceId = validator.requiredString("service_id");
     const hourlyRate = validator.optionalNumber("hourly_rate");
-    const responseTimeHours = validator.optionalEnum("response_time_hours", Object.values(ResponseTimeType) as ResponseTimeType[]);
+    const responseTimeHours = validator.optionalEnum("response_time_type", Object.values(ResponseTimeType) as ResponseTimeType[]);
     const comment = validator.optionalString("comment");
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
