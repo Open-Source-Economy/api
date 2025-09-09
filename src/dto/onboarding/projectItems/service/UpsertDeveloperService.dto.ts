@@ -1,10 +1,10 @@
-import { DeveloperService, ProjectItemId, ResponseTimeType, ResponseTimeTypeCompanion, ServiceId, UUIDCompanion } from "../../../../model";
+import { DeveloperService, DeveloperProjectItemId, ResponseTimeType, ResponseTimeTypeCompanion, ServiceId, UUIDCompanion } from "../../../../model";
 import Joi from "joi";
 
 export interface UpsertDeveloperServiceParams {}
 
 export interface UpsertDeveloperServiceBody {
-  projectItemIds: ProjectItemId[];
+  developerProjectItemIds: DeveloperProjectItemId[];
   serviceId: ServiceId;
   hourlyRate?: number;
   responseTimeHours?: ResponseTimeType | null;
@@ -21,7 +21,7 @@ export namespace UpsertDeveloperServiceCompanion {
   export const paramsSchema: Joi.ObjectSchema<UpsertDeveloperServiceParams> = Joi.object({}).unknown(false);
 
   export const bodySchema: Joi.ObjectSchema<UpsertDeveloperServiceBody> = Joi.object({
-    projectItemIds: Joi.array()
+    developerProjectItemIds: Joi.array()
       .items(
         Joi.object({
           uuid: UUIDCompanion.schema.label("Project Item ID"),
