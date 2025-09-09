@@ -10,7 +10,7 @@ export class DeveloperServiceId extends UUID {}
 export interface DeveloperService {
   id: DeveloperServiceId;
   developerProfileId: DeveloperProfileId;
-  developerProjectItemId: DeveloperProjectItemId[];
+  developerProjectItemIds: DeveloperProjectItemId[];
   serviceId: ServiceId;
   hourlyRate?: number;
   responseTimeHours?: ResponseTimeType | null;
@@ -42,7 +42,7 @@ export namespace DeveloperServiceCompanion {
     return {
       id: new DeveloperServiceId(id),
       developerProfileId: new DeveloperProfileId(developerProfileId),
-      developerProjectItemId: [],
+      developerProjectItemIds: [],
       serviceId: new ServiceId(serviceId),
       hourlyRate,
       responseTimeHours: responseTimeHours,
