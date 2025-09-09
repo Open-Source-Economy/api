@@ -1,15 +1,16 @@
 import { ValidationError, Validator } from "../error";
 import { DeveloperProfileId } from "./DeveloperProfile";
 import { UUID } from "../UUID";
-import { ProjectItemId, ServiceId } from "../project";
+import { ServiceId } from "../project";
 import { ResponseTimeType } from "./ResponseTimeType";
+import { DeveloperProjectItemId } from "./DeveloperProjectItem";
 
 export class DeveloperServiceId extends UUID {}
 
 export interface DeveloperService {
   id: DeveloperServiceId;
   developerProfileId: DeveloperProfileId;
-  projectItemIds: ProjectItemId[];
+  developerProjectItemId: DeveloperProjectItemId[];
   serviceId: ServiceId;
   hourlyRate?: number;
   responseTimeHours?: ResponseTimeType | null;
@@ -41,7 +42,7 @@ export namespace DeveloperServiceCompanion {
     return {
       id: new DeveloperServiceId(id),
       developerProfileId: new DeveloperProfileId(developerProfileId),
-      projectItemIds: [],
+      developerProjectItemId: [],
       serviceId: new ServiceId(serviceId),
       hourlyRate,
       responseTimeHours: responseTimeHours,
