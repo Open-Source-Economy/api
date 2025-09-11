@@ -5,7 +5,7 @@ import { UpsertDeveloperServiceBody, UpsertDeveloperServiceCompanion } from "./U
 export interface UpsertDeveloperServicesParams {}
 
 export interface UpsertDeveloperServicesBody {
-  upsertDeveloperServices: UpsertDeveloperServiceBody; // TODO: not use it is the best way. Maybe we should define a type
+  upsertDeveloperServices: UpsertDeveloperServiceBody; // TODO: lolo not use it is the best way. Maybe we should define a type
 }
 
 export interface UpsertDeveloperServicesQuery {}
