@@ -5,7 +5,7 @@ import { UpsertDeveloperServiceBody, UpsertDeveloperServiceCompanion } from "./U
 export interface UpsertDeveloperServicesParams {}
 
 export interface UpsertDeveloperServicesBody {
-  upsertDeveloperServices: UpsertDeveloperServiceBody; // TODO: lolo not use it is the best way. Maybe we should define a type
+  upsertDeveloperServices: UpsertDeveloperServiceBody[]; // TODO: Maybe we should define a type instead of reusing UpsertDeveloperServiceBody
 }
 
 export interface UpsertDeveloperServicesQuery {}
@@ -18,11 +18,17 @@ export namespace UpsertDeveloperServicesCompanion {
   export const paramsSchema: Joi.ObjectSchema<UpsertDeveloperServicesParams> = Joi.object({}).unknown(false);
 
   export const bodySchema: Joi.ObjectSchema<UpsertDeveloperServicesBody> = Joi.object({
-    upsertDeveloperServices: Joi.array().items(UpsertDeveloperServiceCompanion.bodySchema).min(1).required().messages({
-      "array.base": "The 'upsertDeveloperServices' field must be an array.",
-      "array.min": "The 'upsertDeveloperServices' array must contain at least one object.",
-      "any.required": "The 'upsertDeveloperServices' field is required.",
-    }),
+    upsertDeveloperServices: Joi.array()
+      .items(UpsertDeveloperServiceCompanion.bodySchema)
+      .min(1)
+      .unique("serviceId.uuid") // Ensures serviceId.uuid is unique across the array
+      .required()
+      .messages({
+        "array.base": "The 'upsertDeveloperServices' field must be an array.",
+        "array.min": "The 'upsertDeveloperServices' array must contain at least one object.",
+        "array.unique": "The serviceId must be unique for each service in the request.",
+        "any.required": "The 'upsertDeveloperServices' field is required.",
+      }),
   })
     .required()
     .unknown(false)
