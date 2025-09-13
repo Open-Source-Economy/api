@@ -10,14 +10,17 @@ export enum MergeRightsType {
   // Can merge into specific, non-critical branches (e.g., docs, feature branches)
   LIMITED = "limited",
 
-  // A specialized maintainer responsible for a specific component or subsystem
-  SUBSYSTEM_MAINTAINER = "subsystem_maintainer",
+  // // Can merge into a specific, well-defined module or part of the codebase
+  // MAINTAINER = "maintainer",
 
   // Has full merge rights to the entire project's repository
-  MAINTAINER = "maintainer",
+  FULL_COMMITTER = "full_committer",
 
-  // A committer with rights delegated for a specific task or limited scope
-  DELEGATED_COMMITTER = "delegated_committer",
+  // // A specialized maintainer responsible for a specific component or subsystem
+  // SUBSYSTEM_MAINTAINER = "subsystem_maintainer",
+  //
+  // // A committer with rights delegated for a specific task or limited scope
+  // DELEGATED_COMMITTER = "delegated_committer",
 
   // Can propose a merge but it requires a majority vote from other committers
   VOTE_BASED_COMMITTER = "vote_based_committer",
