@@ -21,7 +21,7 @@ export enum MergeRightsType {
   //
   // // A committer with rights delegated for a specific task or limited scope
   // DELEGATED_COMMITTER = "delegated_committer",
-
+  //
   // Can propose a merge but it requires a majority vote from other committers
   VOTE_BASED_COMMITTER = "vote_based_committer",
 
