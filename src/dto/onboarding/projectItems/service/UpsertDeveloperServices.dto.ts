@@ -1,4 +1,4 @@
-import { DeveloperService, DeveloperProjectItemId, ResponseTimeType, ResponseTimeTypeCompanion, ServiceId, UUIDCompanion } from "../../../../model";
+import { DeveloperService } from "../../../../model";
 import Joi from "joi";
 import { UpsertDeveloperServiceBody, UpsertDeveloperServiceCompanion } from "./UpsertDeveloperService.dto";
 

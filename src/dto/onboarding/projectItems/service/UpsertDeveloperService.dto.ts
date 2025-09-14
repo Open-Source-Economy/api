@@ -1,4 +1,4 @@
-import { DeveloperService, DeveloperProjectItemId, ResponseTimeType, ResponseTimeTypeCompanion, ServiceId, UUIDCompanion } from "../../../../model";
+import { DeveloperProjectItemId, DeveloperService, ResponseTimeType, ResponseTimeTypeCompanion, ServiceId, UUIDCompanion } from "../../../../model";
 import Joi from "joi";
 
 export interface UpsertDeveloperServiceParams {}

@@ -1,4 +1,4 @@
-import { DeveloperProjectItemId, ProjectItemId, UUIDCompanion } from "../../../model";
+import { DeveloperProjectItemId, UUIDCompanion } from "../../../model";
 import Joi from "joi";
 
 export interface RemoveDeveloperProjectItemParams {}
