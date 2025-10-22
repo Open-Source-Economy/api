@@ -54,12 +54,47 @@ export class Owner {
   htmlUrl: string;
   avatarUrl?: string;
   displayAvatarUrl?: string;
+  followers?: number;
+  following?: number;
+  publicRepos?: number;
+  publicGists?: number;
+  name?: string;
+  twitterUsername?: string;
+  company?: string;
+  blog?: string;
+  location?: string;
+  email?: string;
 
-  constructor(id: OwnerId, type: OwnerType, htmlUrl: string, avatarUrl?: string) {
+  constructor(
+    id: OwnerId,
+    type: OwnerType,
+    htmlUrl: string,
+    avatarUrl?: string,
+    followers?: number,
+    following?: number,
+    publicRepos?: number,
+    publicGists?: number,
+    name?: string,
+    twitterUsername?: string,
+    company?: string,
+    blog?: string,
+    location?: string,
+    email?: string,
+  ) {
     this.id = id;
     this.type = type;
     this.htmlUrl = htmlUrl;
     this.avatarUrl = avatarUrl;
+    this.followers = followers;
+    this.following = following;
+    this.publicRepos = publicRepos;
+    this.publicGists = publicGists;
+    this.name = name;
+    this.twitterUsername = twitterUsername;
+    this.company = company;
+    this.blog = blog;
+    this.location = location;
+    this.email = email;
 
     if (id.login === "apache") {
       this.displayAvatarUrl = undefined; // Apache Foundation has a special case for their avatar URL due regulation.
@@ -88,6 +123,16 @@ export class Owner {
     const htmlUrl = validator.requiredString("html_url");
     const avatarUrl = validator.optionalString("avatar_url");
     const type = validator.requiredEnum<OwnerType>("type", Object.values(OwnerType) as OwnerType[]);
+    const followers = validator.optionalNumber("followers");
+    const following = validator.optionalNumber("following");
+    const publicRepos = validator.optionalNumber("public_repos");
+    const publicGists = validator.optionalNumber("public_gists");
+    const name = validator.optionalString("name");
+    const twitterUsername = validator.optionalString("twitter_username");
+    const company = validator.optionalString("company");
+    const blog = validator.optionalString("blog");
+    const location = validator.optionalString("location");
+    const email = validator.optionalString("email");
 
     const error = validator.getFirstError();
     if (error) {
@@ -99,7 +144,7 @@ export class Owner {
       return ownerId;
     }
 
-    return new Owner(ownerId, type, htmlUrl, avatarUrl);
+    return new Owner(ownerId, type, htmlUrl, avatarUrl, followers, following, publicRepos, publicGists, name, twitterUsername, company, blog, location, email);
   }
 
   /**
@@ -124,6 +169,16 @@ export class Owner {
     const type: OwnerType = validator.requiredEnum<OwnerType>(`${table_prefix}github_type`, Object.values(OwnerType) as OwnerType[]);
     const htmlUrl = validator.requiredString(`${table_prefix}github_html_url`);
     const avatarUrl = validator.requiredString(`${table_prefix}github_avatar_url`);
+    const followers = validator.optionalNumber(`${table_prefix}github_followers`);
+    const following = validator.optionalNumber(`${table_prefix}github_following`);
+    const publicRepos = validator.optionalNumber(`${table_prefix}github_public_repos`);
+    const publicGists = validator.optionalNumber(`${table_prefix}github_public_gists`);
+    const name = validator.optionalString(`${table_prefix}github_name`);
+    const twitterUsername = validator.optionalString(`${table_prefix}github_twitter_username`);
+    const company = validator.optionalString(`${table_prefix}github_company`);
+    const blog = validator.optionalString(`${table_prefix}github_blog`);
+    const location = validator.optionalString(`${table_prefix}github_location`);
+    const email = validator.optionalString(`${table_prefix}github_email`);
 
     const error = validator.getFirstError();
     if (error) {
@@ -135,7 +190,7 @@ export class Owner {
       return ownerId;
     }
 
-    return new Owner(ownerId, type, htmlUrl, avatarUrl);
+    return new Owner(ownerId, type, htmlUrl, avatarUrl, followers, following, publicRepos, publicGists, name, twitterUsername, company, blog, location, email);
   }
 }
 

@@ -110,7 +110,109 @@ To build the package locally:
 npm run build
 ```
 
-TEMP Lauriane.
+## Testing Changes Locally
+
+### What is this for?
+
+`npm link` creates a symbolic link between your local development version of `@open-source-economy/api-types` and projects that depend on it (like `web2-backend` or `frontend`). This allows you to:
+
+- **Test type changes** before publishing to npm
+- **Develop across multiple packages** simultaneously without publish/install cycles
+- **Catch integration issues early** by testing in real dependent projects
+- **Iterate quickly** on API contracts that affect multiple repositories
+
+### When should you use this?
+
+Use `npm link` when you need to:
+
+- ✅ Add or modify types/interfaces/DTOs that will be used by backend or frontend
+- ✅ Test breaking changes before releasing a major version
+- ✅ Verify that your changes work end-to-end across the stack
+- ✅ Debug type-related issues in dependent projects
+- ✅ Work on features that require coordinated changes across api-types and consuming projects
+
+**Don't use it for:**
+
+- ❌ Simple documentation changes (just publish directly)
+- ❌ Long-term development (link can cause confusion; remember to unlink when done)
+- ❌ Changes you're not planning to test locally
+
+### Setting up Local Development
+
+**1. Link the api-types package globally:**
+```bash
+cd /path/to/api
+npm link
+```
+
+This registers `@open-source-economy/api-types` globally on your machine, making it available for linking.
+
+**2. Link the package in your dependent project:**
+```bash
+cd /path/to/web2-backend
+npm link @open-source-economy/api-types
+```
+
+This replaces the npm-installed version with a symlink to your local development version.
+
+**3. Verify the link is working:**
+```bash
+ls -la node_modules/@open-source-economy/api-types
+```
+You should see it's a symbolic link pointing to your local api folder.
+
+### Development Workflow
+
+1. **Make changes** to the types/DTOs in the api folder
+2. **Build the package** to compile TypeScript changes:
+   ```bash
+   cd /path/to/api
+   npm run build
+   ```
+   💡 **Tip:** The build outputs to the `dist/` folder, which is what consuming projects actually import.
+
+3. **Test in dependent projects** - changes in `dist/` are immediately available in linked projects
+   - Restart your TypeScript server in VSCode if types don't update
+   - Restart your backend/frontend dev server if needed
+
+4. **Iterate** - make changes, rebuild, test - repeat as needed
+
+5. **When ready to publish**, follow the [Making Changes and Publishing](#making-changes-and-publishing-a-new-version) process
+
+### Unlinking (when done with local development)
+
+⚠️ **Important:** Always unlink when you're done to avoid confusion later!
+
+To stop using the local version and return to the published npm version:
+
+```bash
+cd /path/to/web2-backend
+npm unlink @open-source-economy/api-types
+npm install @open-source-economy/api-types
+```
+
+To unlink globally (optional cleanup):
+```bash
+cd /path/to/api
+npm unlink
+```
+
+### Troubleshooting
+
+**Types aren't updating in my IDE:**
+- Rebuild the api package: `npm run build`
+- Restart your TypeScript server in VSCode (Cmd+Shift+P → "Restart TypeScript Server")
+
+**"Cannot find module" errors:**
+- Verify the link exists: `ls -la node_modules/@open-source-economy/api-types`
+- Re-run `npm link @open-source-economy/api-types` in the dependent project
+- Make sure you've run `npm run build` in the api folder
+
+**Changes work locally but break in CI/production:**
+- You forgot to publish! Run through the [publishing process](#making-changes-and-publishing-a-new-version)
+- Remember: `npm link` only affects your local machine
+
+
 ```shell
 npm run build 
 npm run fmt
