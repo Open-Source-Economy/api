@@ -76,11 +76,51 @@ export class Repository {
   id: RepositoryId;
   htmlUrl: string | null;
   description?: string;
+  homepage?: string;
+  language?: string;
+  forksCount?: number;
+  stargazersCount?: number;
+  watchersCount?: number;
+  fullName?: string;
+  fork?: boolean;
+  topics?: string[];
+  openIssuesCount?: number;
+  visibility?: string;
+  subscribersCount?: number;
+  networkCount?: number;
 
-  constructor(id: RepositoryId, htmlUrl: string | null, description?: string) {
+  constructor(
+    id: RepositoryId,
+    htmlUrl: string | null,
+    description?: string,
+    homepage?: string,
+    language?: string,
+    forksCount?: number,
+    stargazersCount?: number,
+    watchersCount?: number,
+    fullName?: string,
+    fork?: boolean,
+    topics?: string[],
+    openIssuesCount?: number,
+    visibility?: string,
+    subscribersCount?: number,
+    networkCount?: number,
+  ) {
     this.id = id;
     this.htmlUrl = htmlUrl;
     this.description = description;
+    this.homepage = homepage;
+    this.language = language;
+    this.forksCount = forksCount;
+    this.stargazersCount = stargazersCount;
+    this.watchersCount = watchersCount;
+    this.fullName = fullName;
+    this.fork = fork;
+    this.topics = topics;
+    this.openIssuesCount = openIssuesCount;
+    this.visibility = visibility;
+    this.subscribersCount = subscribersCount;
+    this.networkCount = networkCount;
   }
 
   // Gitub API: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
@@ -108,12 +148,41 @@ export class Repository {
     const validator = new Validator(json);
     const htmlUrl = validator.optionalString("html_url");
     const description = validator.optionalString("description");
+    const homepage = validator.optionalString("homepage");
+    const language = validator.optionalString("language");
+    const forksCount = validator.optionalNumber("forks_count");
+    const stargazersCount = validator.optionalNumber("stargazers_count");
+    const watchersCount = validator.optionalNumber("watchers_count");
+    const fullName = validator.optionalString("full_name");
+    const fork = validator.optionalBoolean("fork");
+    const topics = validator.optionalArray<string>("topics", "string");
+    const openIssuesCount = validator.optionalNumber("open_issues_count");
+    const visibility = validator.optionalString("visibility");
+    const subscribersCount = validator.optionalNumber("subscribers_count");
+    const networkCount = validator.optionalNumber("network_count");
+
     const error = validator.getFirstError();
     if (error) {
       return error;
     }
 
-    return new Repository(repositoryId, htmlUrl ?? null, description);
+    return new Repository(
+      repositoryId,
+      htmlUrl ?? null,
+      description,
+      homepage,
+      language,
+      forksCount,
+      stargazersCount,
+      watchersCount,
+      fullName,
+      fork,
+      topics,
+      openIssuesCount,
+      visibility,
+      subscribersCount,
+      networkCount,
+    );
   }
 
   /**
@@ -141,13 +210,41 @@ export class Repository {
 
     const htmlUrl = validator.requiredString(`${table_prefix}github_html_url`);
     const description = validator.optionalString(`${table_prefix}github_description`);
+    const homepage = validator.optionalString(`${table_prefix}github_homepage`);
+    const language = validator.optionalString(`${table_prefix}github_language`);
+    const forksCount = validator.optionalNumber(`${table_prefix}github_forks_count`);
+    const stargazersCount = validator.optionalNumber(`${table_prefix}github_stargazers_count`);
+    const watchersCount = validator.optionalNumber(`${table_prefix}github_watchers_count`);
+    const fullName = validator.optionalString(`${table_prefix}github_full_name`);
+    const fork = validator.optionalBoolean(`${table_prefix}github_fork`);
+    const topics = validator.optionalArray<string>(`${table_prefix}github_topics`, "string");
+    const openIssuesCount = validator.optionalNumber(`${table_prefix}github_open_issues_count`);
+    const visibility = validator.optionalString(`${table_prefix}github_visibility`);
+    const subscribersCount = validator.optionalNumber(`${table_prefix}github_subscribers_count`);
+    const networkCount = validator.optionalNumber(`${table_prefix}github_network_count`);
 
     const error = validator.getFirstError();
     if (error) {
       return error;
     }
 
-    return new Repository(repositoryId, htmlUrl, description);
+    return new Repository(
+      repositoryId,
+      htmlUrl,
+      description,
+      homepage,
+      language,
+      forksCount,
+      stargazersCount,
+      watchersCount,
+      fullName,
+      fork,
+      topics,
+      openIssuesCount,
+      visibility,
+      subscribersCount,
+      networkCount,
+    );
   }
 }
 

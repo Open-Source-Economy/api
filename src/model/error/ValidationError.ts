@@ -190,6 +190,18 @@ export class Validator {
     }
   }
 
+  optionalBoolean(path: string | string[]): boolean | undefined {
+    const value = this.getValue(path);
+    if (value === undefined || value === null) {
+      return undefined;
+    } else if (typeof value !== "boolean") {
+      this.errors.push(new BooleanValidationError(path, value, this.data));
+      return undefined;
+    } else {
+      return value;
+    }
+  }
+
   optionalObject(path: string | string[]): void {
     const value = this.getValue(path);
     if (value === undefined || value === null) {
