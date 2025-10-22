@@ -19,16 +19,16 @@ export interface DeveloperProjectItem {
 }
 
 export namespace DeveloperProjectItemCompanion {
-  export function fromBackend(row: any): DeveloperProjectItem | ValidationError {
+  export function fromBackend(row: any, table_prefix: string = ""): DeveloperProjectItem | ValidationError {
     const validator = new Validator(row);
-    const id = validator.requiredString("id");
-    const developerProfileId = validator.requiredString("developer_profile_id");
-    const projectItemId = validator.requiredString("project_item_id");
-    const roles = validator.requiredArrayOfEnums("roles", Object.values(DeveloperRoleType) as DeveloperRoleType[]);
-    const mergeRights = validator.requiredArrayOfEnums("merge_rights", Object.values(MergeRightsType) as MergeRightsType[]);
-    const comment = validator.optionalString("comment"); // Added optional comment validation
-    const createdAt = validator.requiredDate("created_at");
-    const updatedAt = validator.requiredDate("updated_at");
+    const id = validator.requiredString(`${table_prefix}id`);
+    const developerProfileId = validator.requiredString(`${table_prefix}developer_profile_id`);
+    const projectItemId = validator.requiredString(`${table_prefix}project_item_id`);
+    const roles = validator.requiredArrayOfEnums(`${table_prefix}roles`, Object.values(DeveloperRoleType) as DeveloperRoleType[]);
+    const mergeRights = validator.requiredArrayOfEnums(`${table_prefix}merge_rights`, Object.values(MergeRightsType) as MergeRightsType[]);
+    const comment = validator.optionalString(`${table_prefix}comment`);
+    const createdAt = validator.requiredDate(`${table_prefix}created_at`);
+    const updatedAt = validator.requiredDate(`${table_prefix}updated_at`);
 
     const error = validator.getFirstError();
     if (error) {
@@ -41,7 +41,7 @@ export namespace DeveloperProjectItemCompanion {
       projectItemId: new ProjectItemId(projectItemId),
       roles,
       mergeRights,
-      comment, // Added comment
+      comment,
       createdAt,
       updatedAt,
     };

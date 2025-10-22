@@ -217,7 +217,7 @@ npm unlink
 npm run build 
 npm run fmt
 git add .
-git commit -m "Add synchronization for repository github data"
+git commit -m "Add ProjectItemsWithDetails"
 git push origin
 npm version prerelease
 npm publish --tag beta
