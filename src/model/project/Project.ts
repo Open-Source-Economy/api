@@ -1,5 +1,4 @@
 import { Owner, OwnerId, Repository, RepositoryId } from "../github";
-import { ValidationError, Validator } from "../error";
 import { ProjectEcosystem } from "./ProjectEcosystem";
 
 // ProjectId is a type union rather than a class
@@ -23,22 +22,6 @@ export class Project {
     this.owner = owner;
     this.repository = repository;
     this.projectEcosystem = projectEcosystem;
-  }
-
-  static fromBackend(row: any, owner_table_prefix: string, repository_prefix: string): Project | ValidationError {
-    const validator = new Validator(row);
-
-    // Get the ecosystem
-    const ecosystem = validator.optionalEnum("ecosystem", Object.values(ProjectEcosystem) as ProjectEcosystem[]);
-
-    const owner = Owner.fromBackend(row, owner_table_prefix);
-    const repository = Repository.fromBackend(row, repository_prefix);
-
-    const error = validator.getFirstError();
-    if (error) return error;
-    if (owner instanceof ValidationError) return owner;
-
-    return new Project(owner, repository instanceof Repository ? repository : undefined, ecosystem);
   }
 }
 

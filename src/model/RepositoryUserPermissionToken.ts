@@ -53,41 +53,4 @@ export class RepositoryUserPermissionToken {
     this.expiresAt = expiresAt;
     this.hasBeenUsed = hasBeenUsed;
   }
-
-  static fromBackend(row: any): RepositoryUserPermissionToken | ValidationError {
-    const validator = new Validator(row);
-    const id = validator.requiredString("id");
-    const userName = validator.optionalString("user_name");
-    const userEmail = validator.optionalString("user_email");
-    const userGithubOwnerLogin = validator.requiredString("user_github_owner_login");
-    const token = validator.requiredString("token");
-    const repositoryId = RepositoryId.fromBackendForeignKey(row);
-    if (repositoryId instanceof ValidationError) {
-      return repositoryId;
-    }
-    const repositoryUserRole = validator.requiredEnum("repository_user_role", Object.values(RepositoryUserRole) as RepositoryUserRole[]);
-    const rate = validator.optionalDecimal("rate");
-    const currency = validator.optionalEnum("currency", Object.values(Currency) as Currency[]);
-    const expiresAt = validator.requiredDate("expires_at");
-    const hasBeenUsed = validator.requiredBoolean("has_been_used");
-
-    const error = validator.getFirstError();
-    if (error) {
-      return error;
-    }
-
-    return new RepositoryUserPermissionToken(
-      new RepositoryUserPermissionTokenId(id),
-      userName ?? null,
-      userEmail ?? null,
-      userGithubOwnerLogin,
-      token,
-      repositoryId,
-      repositoryUserRole,
-      rate ?? null,
-      currency ?? null,
-      expiresAt,
-      hasBeenUsed,
-    );
-  }
 }
