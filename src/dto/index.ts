@@ -14,3 +14,4 @@ export * from "./CreateManualInvoice.dto";
 export * from "./GetCampaign.dto";
 export * from "./GetPlans.dto";
 export * from "./NewsletterSubscription.dto";
+export * from "./GetServiceHierarchy.dto";

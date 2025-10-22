@@ -1,4 +1,5 @@
 import { ValidationError, Validator } from "../error";
+import Joi from "joi";
 
 export class OwnerId {
   login: string;
@@ -52,12 +53,19 @@ export class Owner {
   type: OwnerType;
   htmlUrl: string;
   avatarUrl?: string;
+  displayAvatarUrl?: string;
 
   constructor(id: OwnerId, type: OwnerType, htmlUrl: string, avatarUrl?: string) {
     this.id = id;
     this.type = type;
     this.htmlUrl = htmlUrl;
     this.avatarUrl = avatarUrl;
+
+    if (id.login === "apache") {
+      this.displayAvatarUrl = undefined; // Apache Foundation has a special case for their avatar URL due regulation.
+    } else {
+      this.displayAvatarUrl = avatarUrl;
+    }
   }
 
   // For Organization
@@ -129,4 +137,20 @@ export class Owner {
 
     return new Owner(ownerId, type, htmlUrl, avatarUrl);
   }
+}
+
+export namespace OwnerIdCompanion {
+  export const schema: Joi.ObjectSchema<OwnerId> = Joi.object({
+    login: Joi.string().trim().min(1).required().messages({
+      "string.empty": "Owner login cannot be empty",
+      "string.min": "Owner login must contain at least one character",
+      "string.trim": "Owner login cannot consist only of spaces",
+      "any.required": "Owner login is required",
+    }),
+    githubId: Joi.number().integer().min(1).optional().messages({
+      "number.base": "GitHub ID must be a number",
+      "number.integer": "GitHub ID must be an integer",
+      "number.min": "GitHub ID cannot be less than {{#limit}}",
+    }),
+  });
 }

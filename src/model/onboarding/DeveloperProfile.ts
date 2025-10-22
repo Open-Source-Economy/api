@@ -1,33 +1,24 @@
 import { ValidationError, Validator } from "../error";
 import { UserId } from "../user";
+import { UUID } from "../UUID";
 
-export class DeveloperProfileId {
-  uuid: string;
+export class DeveloperProfileId extends UUID {}
 
-  constructor(uuid: string) {
-    this.uuid = uuid;
-  }
-}
-
-export class DeveloperProfile {
+export interface DeveloperProfile {
   id: DeveloperProfileId;
   userId: UserId;
+  contactEmail: string; // Added contactEmail
   onboardingCompleted: boolean;
   createdAt: Date;
   updatedAt: Date;
+}
 
-  constructor(id: DeveloperProfileId, userId: UserId, onboardingCompleted: boolean, createdAt: Date, updatedAt: Date) {
-    this.id = id;
-    this.userId = userId;
-    this.onboardingCompleted = onboardingCompleted;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
-  }
-
-  static fromBackend(row: any): DeveloperProfile | ValidationError {
+export namespace DeveloperProfileCompanion {
+  export function fromBackend(row: any): DeveloperProfile | ValidationError {
     const validator = new Validator(row);
     const id = validator.requiredString("id");
     const userId = validator.requiredString("user_id");
+    const contactEmail = validator.requiredString("contact_email");
     const onboardingCompleted = validator.requiredBoolean("onboarding_completed");
     const createdAt = validator.requiredDate("created_at");
     const updatedAt = validator.requiredDate("updated_at");
@@ -37,6 +28,13 @@ export class DeveloperProfile {
       return error;
     }
 
-    return new DeveloperProfile(new DeveloperProfileId(id), new UserId(userId), onboardingCompleted, createdAt, updatedAt);
+    return {
+      id: new DeveloperProfileId(id),
+      userId: new UserId(userId),
+      contactEmail,
+      onboardingCompleted,
+      createdAt,
+      updatedAt,
+    };
   }
 }

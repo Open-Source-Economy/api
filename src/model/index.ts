@@ -3,6 +3,9 @@ export * from "./user";
 export * from "./project";
 export * from "./stripe";
 export * from "./onboarding";
+export * from "./error";
+
+export * from "./UUID";
 export * from "./Address";
 export * from "./FinancialIssue";
 export * from "./Company";
@@ -12,3 +15,5 @@ export * from "./ManualInvoice";
 export * from "./CompanyUserPermissionToken";
 export * from "./RepositoryUserPermissionToken";
 export * from "./UserRepository";
+export * from "./NewsletterSubscription";
+export * from "./Terms";

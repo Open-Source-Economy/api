@@ -7,4 +7,8 @@ export interface ErrorResponse {
   code: number;
   message: string;
   stack?: string;
+  details?: {
+    message: string;
+    path: Array<string | number>;
+  }[];
 }
