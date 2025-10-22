@@ -216,9 +216,11 @@ npm unlink
 ```shell
 npm run build 
 npm run fmt
-git wipp
-npm version prerelease
-npm publish --tag beta
-rm -f -r dist
+git add .
+git commit -m "Add synchronization for github data"
+git push origin
+#npm version prerelease
+#npm publish --tag beta
+#rm -f -rm dist
 ```
 
