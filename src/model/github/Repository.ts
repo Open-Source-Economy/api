@@ -46,15 +46,15 @@ export class RepositoryId {
   }
 
   static fromBackendPrimaryKey(row: any, table_prefix: string = ""): RepositoryId | ValidationError {
-    return RepositoryId.fromAny(row, `${table_prefix}github_name`, `${table_prefix}github_id`);
+    return RepositoryId.fromAny(row, `${table_prefix}github_name`, `${table_prefix}github_id`, table_prefix);
   }
 
   static fromBackendForeignKey(row: any, table_prefix: string = ""): RepositoryId | ValidationError {
-    return RepositoryId.fromAny(row, `${table_prefix}github_repository_name`, `${table_prefix}github_repository_id`);
+    return RepositoryId.fromAny(row, `${table_prefix}github_repository_name`, `${table_prefix}github_repository_id`, table_prefix);
   }
 
-  private static fromAny(data: any, nameKey: string, idKey: string): RepositoryId | ValidationError {
-    const ownerId = OwnerId.fromBackendForeignKey(data);
+  private static fromAny(data: any, nameKey: string, idKey: string, table_prefix: string = ""): RepositoryId | ValidationError {
+    const ownerId = OwnerId.fromBackendForeignKey(data, table_prefix);
     if (ownerId instanceof ValidationError) {
       return ownerId;
     }

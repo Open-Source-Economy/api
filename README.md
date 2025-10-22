@@ -197,21 +197,7 @@ cd /path/to/api
 npm unlink
 ```
 
-### Troubleshooting
-
-**Types aren't updating in my IDE:**
-- Rebuild the api package: `npm run build`
-- Restart your TypeScript server in VSCode (Cmd+Shift+P → "Restart TypeScript Server")
-
-**"Cannot find module" errors:**
-- Verify the link exists: `ls -la node_modules/@open-source-economy/api-types`
-- Re-run `npm link @open-source-economy/api-types` in the dependent project
-- Make sure you've run `npm run build` in the api folder
-
-**Changes work locally but break in CI/production:**
-- You forgot to publish! Run through the [publishing process](#making-changes-and-publishing-a-new-version)
-- Remember: `npm link` only affects your local machine
-
+### beta publish example
 
 ```shell
 npm run build 
