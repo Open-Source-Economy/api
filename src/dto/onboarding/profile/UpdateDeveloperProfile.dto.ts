@@ -21,12 +21,16 @@ export namespace UpdateDeveloperContactInfosCompanion {
       "string.trim": "Name cannot consist only of spaces",
       "any.required": "Name is required",
     }),
-    email: Joi.string().trim().email().required().messages({
-      "string.empty": "Email cannot be empty",
-      "string.email": "Email must be a valid email address",
-      "string.trim": "Email cannot consist only of spaces",
-      "any.required": "Email is required",
-    }),
+    email: Joi.string()
+      .trim()
+      .email({ tlds: { allow: false } })
+      .required()
+      .messages({
+        "string.empty": "Email cannot be empty",
+        "string.email": "Email must be a valid email address",
+        "string.trim": "Email cannot consist only of spaces",
+        "any.required": "Email is required",
+      }),
   });
 
   export const querySchema: Joi.ObjectSchema<UpdateDeveloperContactInfosQuery> = Joi.object({});

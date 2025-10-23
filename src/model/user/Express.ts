@@ -9,7 +9,7 @@ declare global {
     interface User {
       id: UserId;
       name: string | null;
-      data: LocalUser | ThirdPartyUser;
+      data: ThirdPartyUser | LocalUser;
       role: UserRole;
       preferredCurrency?: Currency;
       termsAcceptedVersion?: string;

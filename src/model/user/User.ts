@@ -28,11 +28,4 @@ export const userUtils = {
   },
 };
 
-export interface User extends Express.User {
-  id: UserId;
-  name: string | null;
-  data: LocalUser | ThirdPartyUser;
-  role: UserRole;
-  preferredCurrency?: Currency;
-  termsAcceptedVersion?: string;
-}
+export type User = Express.User;
