@@ -197,6 +197,20 @@ cd /path/to/api
 npm unlink
 ```
 
+
+### Patch publish example
+
+```shell
+npm run build 
+npm run fmt
+git add .
+git commit -m "Add ProjectCategory enum"
+git push origin
+npm version patch
+npm publish
+rm -f -rm dist
+```
+
 ### beta publish example
 
 ```shell

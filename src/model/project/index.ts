@@ -5,3 +5,4 @@ export * from "./Project";
 export * from "./ProjectEcosystem";
 export * from "./ProjectItem";
 export * from "./ProjectItemType";
+export * from "./ProjectCategory";
