@@ -204,7 +204,7 @@ npm unlink
 npm run build 
 npm run fmt
 git add .
-git commit -m "Add filter option to ProjectItemsWithDetails"
+git commit -m "Refactor GetProjectItemsWithDetails"
 git push origin
 npm version patch
 npm publish

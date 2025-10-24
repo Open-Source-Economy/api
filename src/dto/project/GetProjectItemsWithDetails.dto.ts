@@ -17,6 +17,7 @@ export enum ProjectItemSortField {
   FORKS = "forks",
   MAINTAINERS = "maintainers",
   STARGAZERS = "stargazers",
+  FOLLOWERS = "followers",
   CREATED_AT = "created_at",
   UPDATED_AT = "updated_at",
 }
@@ -29,16 +30,29 @@ export enum SortOrder {
 export interface GetProjectItemsWithDetailsParams {}
 
 export interface GetProjectItemsWithDetailsResponse {
-  projectItems: ProjectItemWithDetails[];
-  total: number; // Total count before limit
+  repositories: ProjectItemWithDetails[]; // GITHUB_REPOSITORY items (sorted if repositoriesSortBy is specified)
+  owners: ProjectItemWithDetails[]; // GITHUB_OWNER items (sorted if ownersSortBy is specified)
+  urls: ProjectItemWithDetails[]; // URL items (sorted if urlsSortBy is specified)
+  stats: {
+    totalProjects: number; // Total amount of ALL projects (not affected by limit filters)
+    totalMaintainers: number; // Total number of unique maintainers across ALL projects (not affected by limit filters)
+    totalStars: number; // Combined stargazers count from ALL repositories (not affected by limit filters)
+    totalForks: number; // Combined forks count from ALL repositories (not affected by limit filters)
+    totalFollowers: number; // Combined followers count from ALL owners (not affected by limit filters)
+  };
 }
 
 export interface GetProjectItemsWithDetailsBody {}
 
-export interface GetProjectItemsWithDetailsQuery {
+export interface ProjectItemQueryParams {
   sortBy?: ProjectItemSortField;
   sortOrder?: SortOrder;
   limit?: number;
+}
+export interface GetProjectItemsWithDetailsQuery {
+  repositories?: ProjectItemQueryParams; // Query parameters for GITHUB_REPOSITORY items
+  owners?: ProjectItemQueryParams; // Query parameters for GITHUB_OWNER items
+  urls?: ProjectItemQueryParams; // Query parameters for URL items
 }
 
 export namespace GetProjectItemsWithDetailsCompanion {
@@ -46,7 +60,7 @@ export namespace GetProjectItemsWithDetailsCompanion {
 
   export const bodySchema: Joi.ObjectSchema<GetProjectItemsWithDetailsBody> = Joi.object({});
 
-  export const querySchema: Joi.ObjectSchema<GetProjectItemsWithDetailsQuery> = Joi.object({
+  const projectItemQueryParamsSchema = Joi.object({
     sortBy: Joi.string()
       .valid(...Object.values(ProjectItemSortField))
       .optional()
@@ -66,5 +80,11 @@ export namespace GetProjectItemsWithDetailsCompanion {
       "number.min": "limit must be at least 1",
       "number.max": "limit cannot exceed 100",
     }),
+  });
+
+  export const querySchema: Joi.ObjectSchema<GetProjectItemsWithDetailsQuery> = Joi.object({
+    repositories: projectItemQueryParamsSchema.optional(),
+    owners: projectItemQueryParamsSchema.optional(),
+    urls: projectItemQueryParamsSchema.optional(),
   });
 }
