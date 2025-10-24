@@ -17,3 +17,4 @@ export * from "./RepositoryUserPermissionToken";
 export * from "./UserRepository";
 export * from "./NewsletterSubscription";
 export * from "./Terms";
+export * from "./ContactReason";

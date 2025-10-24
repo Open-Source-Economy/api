@@ -204,7 +204,7 @@ npm unlink
 npm run build 
 npm run fmt
 git add .
-git commit -m "Refactor GetProjectItemsWithDetails"
+git commit -m "Add ContactForm"
 git push origin
 npm version patch
 npm publish

@@ -15,3 +15,4 @@ export * from "./GetCampaign.dto";
 export * from "./GetPlans.dto";
 export * from "./NewsletterSubscription.dto";
 export * from "./GetServiceHierarchy.dto";
+export * from "./ContactForm.dto";
