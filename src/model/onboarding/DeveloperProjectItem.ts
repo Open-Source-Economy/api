@@ -1,6 +1,6 @@
 import { DeveloperProfileId } from "./DeveloperProfile";
 import { UUID } from "../UUID";
-import { ProjectItemId } from "../project";
+import { ProjectCategory, ProjectItemId } from "../project";
 import { DeveloperRoleType } from "./DeveloperRoleType";
 import { MergeRightsType } from "./MergeRightsType";
 
@@ -13,6 +13,8 @@ export interface DeveloperProjectItem {
   roles: DeveloperRoleType[];
   mergeRights: MergeRightsType[];
   comment?: string;
+  customCategories?: string[];
+  predefinedCategories?: ProjectCategory[];
   createdAt: Date;
   updatedAt: Date;
 }

@@ -1,5 +1,4 @@
 import { Owner, OwnerId, Repository, RepositoryId } from "../github";
-import { ProjectEcosystem } from "./ProjectEcosystem";
 
 // ProjectId is a type union rather than a class
 export type ProjectId = RepositoryId | OwnerId;
@@ -8,9 +7,8 @@ export class Project {
   id: ProjectId;
   owner: Owner;
   repository?: Repository;
-  projectEcosystem?: ProjectEcosystem;
 
-  constructor(owner: Owner, repository?: Repository, projectEcosystem?: ProjectEcosystem) {
+  constructor(owner: Owner, repository?: Repository) {
     let projectId: ProjectId;
     if (repository instanceof Repository) {
       projectId = repository.id;
@@ -21,7 +19,6 @@ export class Project {
     this.id = projectId;
     this.owner = owner;
     this.repository = repository;
-    this.projectEcosystem = projectEcosystem;
   }
 }
 

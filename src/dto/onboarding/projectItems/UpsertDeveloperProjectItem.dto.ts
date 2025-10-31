@@ -5,6 +5,8 @@ import {
   MergeRightsType,
   MergeRightsTypeCompanion,
   OwnerIdCompanion,
+  ProjectCategory,
+  ProjectCategoryCompanion,
   ProjectItem,
   ProjectItemType,
   ProjectItemTypeCompanion,
@@ -21,6 +23,8 @@ export interface UpsertDeveloperProjectItemBody {
   mergeRights: MergeRightsType[];
   roles: DeveloperRoleType[];
   comments?: string;
+  customCategories?: string[];
+  predefinedCategories?: ProjectCategory[];
 }
 
 export interface UpsertDeveloperProjectItemQuery {}
@@ -90,6 +94,13 @@ export namespace UpsertDeveloperProjectItemCompanion {
     }),
     comments: Joi.string().trim().allow("").optional().messages({
       "string.trim": "Comments cannot consist only of spaces",
+    }),
+    customCategories: Joi.array().items(Joi.string().trim()).optional().messages({
+      "array.base": "Custom categories must be an array",
+      "string.trim": "Each custom category must be a non-empty string",
+    }),
+    predefinedCategories: Joi.array().items(ProjectCategoryCompanion.schema.label("Project Category")).optional().messages({
+      "array.base": "Predefined categories must be an array",
     }),
   });
 

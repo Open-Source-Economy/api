@@ -204,7 +204,7 @@ npm unlink
 npm run build 
 npm run fmt
 git add .
-git commit -m "Add ContactForm"
+git commit -m "Add ProjectCategory to ProjectItem and DeveloperProjectItem"
 git push origin
 npm version patch
 npm publish

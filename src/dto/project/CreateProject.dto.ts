@@ -1,4 +1,4 @@
-import { Project, ProjectEcosystem } from "../../model";
+import { Project } from "../../model";
 
 export interface CreateProjectParams {
   owner: string;
@@ -9,8 +9,6 @@ export interface CreateProjectResponse {
   project: Project;
 }
 
-export interface CreateProjectBody {
-  projectEcosystem?: ProjectEcosystem;
-}
+export interface CreateProjectBody {}
 
 export interface CreateProjectQuery {}
