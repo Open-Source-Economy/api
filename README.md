@@ -237,3 +237,17 @@ npm publish --tag beta
 rm -f -rm dist
 ```
 
+
+### Latest publish example
+
+```shell
+npm run build 
+npm run fmt
+git add .
+git commit -m "Implement VerificationStatus for DeveloperProfile and DeveloperProjectItem"
+git push origin
+npm version 1.3.0
+npm publish --tag
+rm -f -rm dist
+```
+

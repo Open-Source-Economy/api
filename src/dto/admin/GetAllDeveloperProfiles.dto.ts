@@ -2,7 +2,6 @@ import Joi from "joi";
 import { FullDeveloperProfile, VerificationStatus } from "../../model";
 
 export interface GetAllDeveloperProfilesParams {}
-export interface GetAllDeveloperProfilesBody {}
 
 /**
  * Query parameters for filtering and searching developer profiles
@@ -46,8 +45,6 @@ export interface GetAllDeveloperProfilesResponse {
 
 export namespace GetAllDeveloperProfilesCompanion {
   export const paramsSchema: Joi.ObjectSchema<GetAllDeveloperProfilesParams> = Joi.object({});
-
-  export const bodySchema: Joi.ObjectSchema<GetAllDeveloperProfilesBody> = Joi.object({});
 
   export const querySchema: Joi.ObjectSchema<GetAllDeveloperProfilesQuery> = Joi.object({
     verificationStatus: Joi.string()

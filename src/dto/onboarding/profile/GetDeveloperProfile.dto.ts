@@ -5,7 +5,6 @@ export interface GetDeveloperProfileParams {
   githubUsername?: string;
 }
 export interface GetDeveloperProfileQuery {}
-
 export interface GetDeveloperProfileResponse {
   profile: FullDeveloperProfile | null;
 }
