@@ -217,9 +217,8 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Add CreateVerificationRecord"
+git commit -m "Fix: GetDeveloperProfile"
 git push origin
-npm version patch
 npm publish --tag beta
 rm -f -rm dist
 ```

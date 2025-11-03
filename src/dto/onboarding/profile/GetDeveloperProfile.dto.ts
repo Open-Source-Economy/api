@@ -1,11 +1,11 @@
 import { FullDeveloperProfile } from "../../../model";
 import Joi from "joi";
 
-export interface GetDeveloperProfileParams {}
-export interface GetDeveloperProfileBody {}
-export interface GetDeveloperProfileQuery {
+export interface GetDeveloperProfileParams {
   githubUsername?: string;
 }
+export interface GetDeveloperProfileBody {}
+export interface GetDeveloperProfileQuery {}
 export interface GetDeveloperProfileResponse {
   profile: FullDeveloperProfile | null;
 }
