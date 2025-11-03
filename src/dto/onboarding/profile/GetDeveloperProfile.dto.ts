@@ -4,7 +4,7 @@ import Joi from "joi";
 export interface GetDeveloperProfileParams {
   githubUsername?: string;
 }
-export interface GetDeveloperProfileBody {}
+export interface GetDeveloperProfileQuery {}
 
 export interface GetDeveloperProfileResponse {
   profile: FullDeveloperProfile | null;
@@ -15,5 +15,5 @@ export namespace GetDeveloperProfileCompanion {
     githubUsername: Joi.string().optional(),
   });
 
-  export const bodySchema: Joi.ObjectSchema<GetDeveloperProfileBody> = Joi.object({});
+  export const querySchema: Joi.ObjectSchema<GetDeveloperProfileQuery> = Joi.object({});
 }
