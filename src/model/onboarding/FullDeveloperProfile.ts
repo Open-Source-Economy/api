@@ -4,12 +4,19 @@ import { DeveloperService } from "./DeveloperService";
 import { DeveloperSettings } from "./DeveloperSettings";
 import { VerificationRecord } from "./VerificationRecord";
 import { ProjectItem, Service } from "../project";
+import { Owner } from "../github";
 
 /**
  * Developer profile entry combining the profile with its verification history
  */
 export interface DeveloperProfileEntry {
   profile: DeveloperProfile;
+
+  /**
+   * GitHub owner information (username, avatar, etc.)
+   * Contains the developer's GitHub profile data
+   */
+  owner: Owner | null;
 
   /**
    * Verification records for this profile.
