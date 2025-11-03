@@ -219,6 +219,7 @@ npm run fmt
 git add .
 git commit -m "Add CreateVerificationRecord"
 git push origin
+npm version patch
 npm publish --tag beta
 rm -f -rm dist
 ```
