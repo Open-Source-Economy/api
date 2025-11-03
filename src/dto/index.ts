@@ -4,6 +4,7 @@ export * from "./auth";
 export * from "./project";
 export * from "./stripe";
 export * from "./onboarding";
+export * from "./admin";
 
 export * from "./CreateCompany.dto";
 export * from "./CreateAddress.dto";

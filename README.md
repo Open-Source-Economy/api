@@ -217,7 +217,7 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Add ProjectItemsWithDetails"
+git commit -m "Implement VerificationStatus for DeveloperProfile and DeveloperProjectItem"
 git push origin
 npm version prerelease
 npm publish --tag beta
