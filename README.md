@@ -219,6 +219,7 @@ npm run fmt
 git add .
 git commit -m "Fix: GetDeveloperProfile"
 git push origin
+npm version prerelease --preid=beta
 npm publish --tag beta
 rm -f -rm dist
 ```
