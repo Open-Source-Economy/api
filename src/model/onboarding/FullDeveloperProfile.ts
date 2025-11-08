@@ -36,6 +36,7 @@ export interface FullDeveloperProfile {
   name: string | null;
   contactEmail: string | null;
   agreedToTerms: boolean | null;
+  onboardingCompleted: boolean;
   profileEntry: DeveloperProfileEntry | null;
   settings: DeveloperSettings | null;
   projects: DeveloperProjectItemEntry[];
