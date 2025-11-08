@@ -6,6 +6,8 @@ export interface RegisterBody {
   password: string;
 }
 
+export interface RegisterParams {}
+
 export interface RegisterQuery {
   companyToken?: string;
   repositoryToken?: string;

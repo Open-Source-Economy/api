@@ -217,7 +217,7 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Refactor: AuthInfo"
+git commit -m "Refactor: all auth DTOs"
 git push origin
 npm version prerelease --preid=alpha
 npm publish --tag alpha

@@ -5,6 +5,8 @@ export interface LoginBody {
   password: string;
 }
 
+export interface LoginParams {}
+
 export interface LoginQuery {}
 
 export interface LoginResponse extends AuthInfo {}

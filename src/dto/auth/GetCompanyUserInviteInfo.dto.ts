@@ -1,3 +1,7 @@
+export interface GetCompanyUserInviteInfoParams {}
+
+export interface GetCompanyUserInviteInfoBody {}
+
 export interface GetCompanyUserInviteInfoQuery {
   token: string;
 }
