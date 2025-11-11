@@ -1,10 +1,7 @@
 import Joi from "joi";
-import { Owner, Repository, ProjectItem, DeveloperProfile, DeveloperProjectItem } from "../../model";
+import { DeveloperProfile, DeveloperProjectItem, Owner, ProjectItemDetails } from "../../model";
 
-export interface ProjectItemWithDetails {
-  projectItem: ProjectItem;
-  owner: Owner | null;
-  repository: Repository | null;
+export interface ProjectItemWithDetails extends ProjectItemDetails {
   developers: Array<{
     developerProfile: DeveloperProfile;
     developerProjectItem: DeveloperProjectItem;

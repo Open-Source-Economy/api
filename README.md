@@ -217,7 +217,7 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Clean FullDeveloperProfile"
+git commit -m "Clean ProjectItemWithDetails"
 git push origin
 npm version prerelease --preid=alpha
 npm publish --tag alpha
