@@ -5,3 +5,4 @@ export * from "./GetProjectServices.dto";
 export * from "./GetProjectAccordion.dto";
 export * from "./GetProjectItemsWithDetails.dto";
 export * from "./UpdateProjectItemCategories.dto";
+export * from "./GetProjectDetails.dto";
