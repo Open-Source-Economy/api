@@ -5,12 +5,14 @@ import { DeveloperSettings } from "./DeveloperSettings";
 import { VerificationRecord } from "./VerificationRecord";
 import { ProjectItem, Service } from "../project";
 import { Owner } from "../github";
+import { User } from "../user";
 
 /**
  * Developer profile entry combining the profile with its verification history
  */
 export interface DeveloperProfileEntry {
   profile: DeveloperProfile;
+  user: User;
 
   /**
    * GitHub owner information (username, avatar, etc.)
@@ -33,10 +35,6 @@ export interface DeveloperProfileEntry {
  * All verification information is contained within each entry (profile and projects).
  */
 export interface FullDeveloperProfile {
-  name: string | null;
-  contactEmail: string | null;
-  agreedToTerms: boolean | null;
-  onboardingCompleted: boolean;
   profileEntry: DeveloperProfileEntry | null;
   settings: DeveloperSettings | null;
   projects: DeveloperProjectItemEntry[];
