@@ -25,7 +25,7 @@ export interface ProjectDeveloperProfile {
   services: Record<string, DeveloperService>;
 }
 
-interface ProjectServiceOffering {
+export interface ProjectServiceOffering {
   responseTimeHours?: [ResponseTimeType, DeveloperProfileId][];
 }
 
