@@ -1,6 +1,6 @@
 {
   "name": "@open-source-economy/api-types",
-  "version": "2.1.11-alpha.8",
+  "version": "2.1.11-alpha.9",
   "description": "Shared TypeScript types for Open Source Economy website API.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
