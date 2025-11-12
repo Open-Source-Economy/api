@@ -12,7 +12,6 @@ export interface ProjectItemWithDetails extends ProjectItemDetails {
 export enum ProjectItemSortField {
   STARS = "stars",
   FORKS = "forks",
-  MAINTAINERS = "maintainers",
   STARGAZERS = "stargazers",
   FOLLOWERS = "followers",
   CREATED_AT = "created_at",
@@ -26,17 +25,19 @@ export enum SortOrder {
 
 export interface GetProjectItemsWithDetailsParams {}
 
+export interface ProjectItemsStats {
+  totalProjects: number;
+  totalMaintainers: number;
+  totalStars: number;
+  totalForks: number;
+  totalFollowers: number;
+}
+
 export interface GetProjectItemsWithDetailsResponse {
-  repositories: ProjectItemWithDetails[]; // GITHUB_REPOSITORY items (sorted if repositoriesSortBy is specified)
-  owners: ProjectItemWithDetails[]; // GITHUB_OWNER items (sorted if ownersSortBy is specified)
-  urls: ProjectItemWithDetails[]; // URL items (sorted if urlsSortBy is specified)
-  stats: {
-    totalProjects: number; // Total amount of ALL projects (not affected by limit filters)
-    totalMaintainers: number; // Total number of unique maintainers across ALL projects (not affected by limit filters)
-    totalStars: number; // Combined stargazers count from ALL repositories (not affected by limit filters)
-    totalForks: number; // Combined forks count from ALL repositories (not affected by limit filters)
-    totalFollowers: number; // Combined followers count from ALL owners (not affected by limit filters)
-  };
+  repositories: ProjectItemWithDetails[];
+  owners: ProjectItemWithDetails[];
+  urls: ProjectItemWithDetails[];
+  stats: ProjectItemsStats;
 }
 
 export interface GetProjectItemsWithDetailsBody {}
