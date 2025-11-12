@@ -6,6 +6,7 @@ import {
   DeveloperService,
   DeveloperSettings,
   ProjectItemDetails,
+  ResponseTimeType,
   Service,
 } from "../../model";
 
@@ -18,18 +19,14 @@ export interface ProjectDeveloperProfile {
   profileEntry: DeveloperProfileEntry | null;
   settings: DeveloperSettings | null;
   projects: DeveloperProjectItemEntry[];
+  /**
+   * Keyed by ServiceId UUID to allow direct lookup of a developer’s configuration for a given service.
+   */
   services: Record<string, DeveloperService>;
 }
 
-export interface ProjectServiceOffering {
-  /**
-   * Developer offering this variant of the service.
-   */
-  developer: DeveloperProfileId;
-  /**
-   * Developer-specific settings for this service (rate, response time, comment, linked project items).
-   */
-  developerService: DeveloperService | null;
+interface ProjectServiceOffering {
+  responseTimeHours?: [ResponseTimeType, DeveloperProfileId][];
 }
 
 export interface GetProjectDetailsResponse {
@@ -38,6 +35,9 @@ export interface GetProjectDetailsResponse {
   /**
    * Developers associated with the project and their services.
    */
+  /**
+   * Keyed by DeveloperProfileId UUID (falls back to the developer profile UUID when no public profile entry exists).
+   */
   developers: Record<string, ProjectDeveloperProfile>;
 
   /**
@@ -45,7 +45,10 @@ export interface GetProjectDetailsResponse {
    * Grouped by Service, while retaining per-developer variants (response time, pricing, etc.).
    */
   service: Service[];
-
+  /**
+   * Map keyed by ServiceId UUID. Every service present in `service` has a matching entry here whose array
+   * enumerates the developer-specific variants for that service.
+   */
   serviceOfferings: Record<string, ProjectServiceOffering[]>;
 }
 
