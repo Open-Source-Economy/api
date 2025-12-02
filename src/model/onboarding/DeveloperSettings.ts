@@ -11,7 +11,6 @@ export interface DeveloperSettings {
   developerProfileId: DeveloperProfileId;
   royaltiesPreference?: PreferenceType;
   servicesPreference?: PreferenceType;
-  donationsPreference?: PreferenceType;
   communitySupporterPreference?: PreferenceType;
   hourlyWeeklyCommitment?: number;
   hourlyWeeklyCommitmentComment?: string | null;

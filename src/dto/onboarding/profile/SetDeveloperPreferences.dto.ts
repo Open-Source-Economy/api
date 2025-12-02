@@ -6,7 +6,6 @@ export interface SetDeveloperPreferencesParams {}
 export interface SetDeveloperPreferencesBody {
   royaltiesPreference?: PreferenceType | null;
   servicesPreference?: PreferenceType | null;
-  donationsPreference?: PreferenceType | null;
   communitySupporterPreference?: PreferenceType | null;
 }
 
@@ -23,9 +22,6 @@ export namespace SetDeveloperPreferencesCompanion {
     }),
     servicesPreference: PreferenceTypeCompanion.schema.optional().allow(null).messages({
       "any.only": "Services preference must be a valid preference type",
-    }),
-    donationsPreference: PreferenceTypeCompanion.schema.optional().allow(null).messages({
-      "any.only": "Donations preference must be a valid preference type",
     }),
     communitySupporterPreference: PreferenceTypeCompanion.schema.optional().allow(null).messages({
       "any.only": "Community supporter preference must be a valid preference type",
