@@ -217,7 +217,7 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Update GetProjectDetailsResponse"
+git commit -m "Replace SetDeveloperIncomeStreams"
 git push origin
 npm version prerelease --preid=alpha
 npm publish --tag alpha
@@ -230,7 +230,7 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Fix: GetDeveloperProfile"
+git commit -m "Replace SetDeveloperIncomeStreams"
 git push origin
 npm version prerelease --preid=beta
 npm publish --tag beta

@@ -18,7 +18,7 @@ export interface GetProjectDetailsParams {
 export interface ProjectDeveloperProfile {
   profileEntry: DeveloperProfileEntry | null;
   settings: DeveloperSettings | null;
-  projects: DeveloperProjectItemEntry[];
+  project: DeveloperProjectItemEntry;
   /**
    * Keyed by ServiceId UUID to allow direct lookup of a developer’s configuration for a given service.
    */

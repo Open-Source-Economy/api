@@ -2,14 +2,17 @@ import { Currency } from "../stripe";
 import { UUID } from "../UUID";
 import { DeveloperProfileId } from "./DeveloperProfile";
 import { OpenToOtherOpportunityType } from "./OpenToOtherOpportunityType";
-import { IncomeStreamType } from "./IncomeStreamType";
+import { PreferenceType } from "./PreferenceType";
 
 export class DeveloperSettingsId extends UUID {}
 
 export interface DeveloperSettings {
   id: DeveloperSettingsId;
   developerProfileId: DeveloperProfileId;
-  incomeStreams?: IncomeStreamType[];
+  royaltiesPreference?: PreferenceType;
+  servicesPreference?: PreferenceType;
+  donationsPreference?: PreferenceType;
+  communitySupporterPreference?: PreferenceType;
   hourlyWeeklyCommitment?: number;
   hourlyWeeklyCommitmentComment?: string | null;
   openToOtherOpportunity?: OpenToOtherOpportunityType;

@@ -4,6 +4,7 @@ export * from "./DeveloperService";
 export * from "./DeveloperProjectItem";
 export * from "./FullDeveloperProfile";
 export * from "./IncomeStreamType";
+export * from "./PreferenceType";
 export * from "./OpenToOtherOpportunityType";
 export * from "./ProjectType";
 export * from "./DeveloperRoleType";
