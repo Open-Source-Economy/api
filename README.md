@@ -251,3 +251,9 @@ npm publish --tag
 rm -f -rm dist
 ```
 
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later). See the [LICENSE](LICENSE) file for details.
+
+The AGPL-3.0 is a strong copyleft license that requires anyone who distributes or runs modified versions of this software on a server to make the source code available to users of that server.
+
