@@ -16,6 +16,7 @@ export interface CheckoutBody {
   successUrl: string;
   // base URL for the frontend (no parameters, no "?" nor "/" at the end)
   cancelUrl: string;
+  metadata?: Record<string, string>;
 }
 
 export interface CheckoutQuery {}

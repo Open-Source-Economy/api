@@ -18,3 +18,4 @@ export * from "./UserRepository";
 export * from "./NewsletterSubscription";
 export * from "./Terms";
 export * from "./ContactReason";
+export * from "./Sponsor";
