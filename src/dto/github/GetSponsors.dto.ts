@@ -9,13 +9,13 @@ export interface GetSponsorsParams {
 
 export type CardSize = "xlarge" | "large" | "small" | "xsmall";
 
-export interface Sponsor {
+export interface SponsorCard {
   companyId: CompanyId;
   size?: CardSize;
 }
 
 export interface GetSponsorsResponse {
-  sponsors: Sponsor[];
+  sponsors: SponsorCard[];
 }
 
 export interface GetSponsorsBody {}
