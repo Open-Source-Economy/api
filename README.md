@@ -230,7 +230,7 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Fix: Add Sponsor"
+git commit -m "Update UpsertDeveloperProjectItem"
 git push origin
 npm version prerelease --preid=beta
 npm publish --tag beta

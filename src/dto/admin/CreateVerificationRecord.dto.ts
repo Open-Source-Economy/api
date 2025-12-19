@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { VerificationRecord, VerificationEntityType, VerificationStatus } from "../../model";
+import { VerificationEntityType, VerificationRecord, VerificationStatus } from "../../model";
 
 export interface CreateVerificationRecordParams {}
 

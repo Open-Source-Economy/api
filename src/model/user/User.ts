@@ -1,6 +1,5 @@
 import { LocalUser } from "./LocalUser";
-import { GithubData, ThirdPartyUser } from "./ThirdPartyUser";
-import { Currency } from "../stripe";
+import { GithubData } from "./ThirdPartyUser";
 import { UUID } from "../UUID";
 
 export class UserId extends UUID {}

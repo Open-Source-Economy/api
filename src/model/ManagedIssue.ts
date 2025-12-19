@@ -1,4 +1,3 @@
-import { ValidationError, Validator } from "./error";
 import { IssueId, UserId } from "./index";
 
 export enum ContributorVisibility {

@@ -17,7 +17,10 @@ import Joi from "joi";
 
 export interface UpsertDeveloperProjectItemParams {}
 
-export interface UpsertDeveloperProjectItemBody {
+/**
+ * Single project item data structure
+ */
+export interface ProjectItemData {
   projectItemType: ProjectItemType;
   sourceIdentifier: SourceIdentifier;
   mergeRights: MergeRightsType[];
@@ -27,17 +30,38 @@ export interface UpsertDeveloperProjectItemBody {
   predefinedCategories?: ProjectCategory[];
 }
 
+/**
+ * Request body - accepts an array of project items
+ * Single item = array of 1, bulk = array of multiple
+ */
+export interface UpsertDeveloperProjectItemBody {
+  projectItems: ProjectItemData[];
+}
+
 export interface UpsertDeveloperProjectItemQuery {}
 
-export interface UpsertDeveloperProjectItemResponse {
+/**
+ * Result for a single project item upsert operation
+ */
+export interface ProjectItemUpsertResult {
   projectItem: ProjectItem;
   developerProjectItem: DeveloperProjectItem;
+}
+
+/**
+ * Response - returns an array of results, one per project item
+ */
+export interface UpsertDeveloperProjectItemResponse {
+  results: ProjectItemUpsertResult[];
 }
 
 export namespace UpsertDeveloperProjectItemCompanion {
   export const paramsSchema: Joi.ObjectSchema<UpsertDeveloperProjectItemParams> = Joi.object({});
 
-  export const bodySchema: Joi.ObjectSchema<UpsertDeveloperProjectItemBody> = Joi.object({
+  /**
+   * Schema for a single project item
+   */
+  export const projectItemDataSchema: Joi.ObjectSchema<ProjectItemData> = Joi.object({
     projectItemType: ProjectItemTypeCompanion.schema.label("Project Item Type").required(),
     sourceIdentifier: Joi.when("projectItemType", {
       switch: [
@@ -103,6 +127,21 @@ export namespace UpsertDeveloperProjectItemCompanion {
       "array.base": "Predefined categories must be an array",
     }),
   });
+
+  /**
+   * Schema for the request body - array of project items
+   */
+  export const bodySchema: Joi.ObjectSchema<UpsertDeveloperProjectItemBody> = Joi.object({
+    projectItems: Joi.array().items(projectItemDataSchema).min(1).required().messages({
+      "array.base": "Project items must be an array",
+      "array.min": "At least one project item is required",
+      "array.empty": "Project items array cannot be empty",
+      "any.required": "Project items are required",
+    }),
+  })
+    .required()
+    .unknown(false)
+    .prefs({ abortEarly: false, convert: true });
 
   export const querySchema: Joi.ObjectSchema<UpsertDeveloperProjectItemQuery> = Joi.object({});
 }

@@ -1,6 +1,4 @@
 import { UserId } from "../user";
-import { DeveloperProfileId } from "./DeveloperProfile";
-import { DeveloperProjectItemId } from "./DeveloperProjectItem";
 import { VerificationStatus } from "./VerificationStatus";
 import { UUID } from "../UUID";
 
