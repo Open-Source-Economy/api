@@ -244,9 +244,9 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Version 2.1.12"
+git commit -m "Version 2.1.13"
 git push origin
-npm version 2.1.12
+npm version 2.1.13
 npm publish --tag
 rm -f -rm dist
 ```
