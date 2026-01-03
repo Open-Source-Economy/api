@@ -244,9 +244,9 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Implement VerificationStatus for DeveloperProfile and DeveloperProjectItem"
+git commit -m "Version 2.1.12"
 git push origin
-npm version 2.1.9
+npm version 2.1.12
 npm publish --tag
 rm -f -rm dist
 ```
