@@ -5,3 +5,4 @@ export * from "./Status.dto";
 export * from "./GetCompanyUserInviteInfo.dto";
 export * from "./GetRepositoryUserInviteInfo.dto";
 export * from "./AuthInfo.dto";
+export * from "./CheckEmail.dto";

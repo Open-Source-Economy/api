@@ -217,7 +217,7 @@ rm -f -rm dist
 npm run build 
 npm run fmt
 git add .
-git commit -m "Replace SetDeveloperIncomeStreams"
+git commit -m "Add CheckEmail"
 git push origin
 npm version prerelease --preid=alpha
 npm publish --tag alpha
