@@ -28,4 +28,5 @@ export interface AuthenticatedUser {
    *             This field will be removed once all consumers migrate.
    */
   repositories: [RepositoryId, RepositoryInfo][]; // if user belongs to a repository
+  serviceTokens: number;
 }
