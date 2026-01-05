@@ -6,3 +6,5 @@ export * from "./GetCompanyUserInviteInfo.dto";
 export * from "./GetRepositoryUserInviteInfo.dto";
 export * from "./AuthInfo.dto";
 export * from "./CheckEmail.dto";
+export * from "./ForgotPassword.dto";
+export * from "./ResetPassword.dto";
