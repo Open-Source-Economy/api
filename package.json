@@ -1,6 +1,6 @@
 {
   "name": "@open-source-economy/api-types",
-  "version": "2.1.12-alpha.0",
+  "version": "2.1.12-alpha.1",
   "description": "Shared TypeScript types for Open Source Economy website API.",
   "license": "AGPL-3.0-or-later",
   "main": "dist/index.js",
