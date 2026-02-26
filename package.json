@@ -1,32 +1,48 @@
 {
   "name": "@open-source-economy/api-types",
-  "version": "2.1.12-alpha.3",
-  "description": "Shared TypeScript types for Open Source Economy website API.",
+  "version": "2.1.13",
+  "description": "Shared API contracts for Open Source Economy platform",
   "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Open-Source-Economy/api.git"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "fmt": "prettier */*.js \"*/**/*{.js,.ts,.tsx}\" -w ; tsc --project tsconfig.json && tsc --project tsconfig.test.json ; rm -f -r dist"
-  },
-  "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/node": "^24.3.0",
-    "@types/stripe": "^8.0.416",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "decimal.js": "^10.6.0",
-    "http-status-codes": "^2.3.0",
-    "joi": "^18.0.1",
-    "stripe": "^18.4.0"
-  },
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "fmt": "prettier --write \"src/**/*.ts\"",
+    "fmt:check": "prettier --check \"src/**/*.ts\"",
+    "ci": "npm run fmt && npm run lint && npm run build",
+    "ci:check": "npm run fmt:check && npm run lint:check && npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@ts-rest/core": "^3.53.0-rc.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/node": "^24.3.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "prettier": "^3.4.2",
+    "semantic-release": "^24.0.0",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.20.0"
+  },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }

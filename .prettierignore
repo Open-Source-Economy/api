@@ -1,10 +1,2 @@
-target
-.github
-.idea
-abi
-archive
-cache
-contracts
-node_modules
-typechain-types
-.anchor
+dist
+CHANGELOG.md

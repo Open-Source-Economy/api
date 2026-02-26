@@ -1,0 +1,84 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - alpha
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  publish-alpha:
+    name: Publish Alpha
+    if: github.ref == 'refs/heads/alpha'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify build
+        run: |
+          test -d dist || (echo "dist folder not found" && exit 1)
+          test -f dist/index.js || (echo "dist/index.js not found" && exit 1)
+
+      - name: Set alpha version
+        run: |
+          BASE=$(node -p "require('./package.json').version.split('-')[0]")
+          SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
+          ALPHA_VERSION="${BASE}-alpha.${SHORT_SHA}"
+          echo "Publishing version: ${ALPHA_VERSION}"
+          npm version "${ALPHA_VERSION}" --no-git-tag-version
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public --tag alpha
+
+  release:
+    name: Release
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify build
+        run: |
+          test -d dist || (echo "dist folder not found" && exit 1)
+          test -f dist/index.js || (echo "dist/index.js not found" && exit 1)
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release

@@ -1,0 +1,8 @@
+import { initContract } from "@ts-rest/core";
+import { checkoutEndpoint } from "src/endpoints";
+
+const c = initContract();
+
+export const stripeContract = c.router({
+  checkout: checkoutEndpoint,
+});
